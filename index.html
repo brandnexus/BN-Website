@@ -1,0 +1,1383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Brand Nexus AI · Enterprise AI Strategy and Transformation</title>
+<meta name="description" content="Brand Nexus AI helps enterprises become AI native. We design the operating model and build the systems, so knowledge compounds instead of leaving. 25 years in AI, 40 Fortune 500 engagements, 100+ enterprises upskilled.">
+<link rel="icon" href="/img/mark.png">
+<meta property="og:title" content="Brand Nexus AI · Enterprise AI Strategy and Transformation">
+<meta property="og:description" content="We design the AI native operating model and build the systems. The advantage that replaces scale, brand and distribution is being assembled right now.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://brandnexus.com/">
+<meta property="og:image" content="https://brandnexus.com/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://brandnexus.com/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Brand Nexus AI","url":"https://brandnexus.com/","logo":"https://brandnexus.com/img/mark.png","description":"Enterprise AI strategy and transformation. We design the AI native operating model and build the systems.","founder":{"@type":"Person","name":"Pedro Laboy"},"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"contact@brandnexus.com"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+<style>
+/* ============================================================
+   Brand Nexus AI, Stage 1 mockup
+   Built to SPEC - brandnexus.com Design Language - v1.0
+   Single visual world: light ground, ink, one violet accent.
+   ============================================================ */
+
+:root{
+  --ground:#f3f2f2;
+  --ink:#201e1d;
+  --violet:#5a3cff;
+  --violet-deep:#3f22cc;
+  --violet-ring:#8f72ff;
+  --violet-dark-link:#a795ff;
+
+  --n-100:#eae9e9;
+  --n-200:#d7d3d3;
+  --n-400:#9b9797;
+  --n-500:#7d7979;
+  --n-600:#605d5d;
+  --n-700:#444141;
+
+  /* section hues */
+  --h00:#8f72ff;
+  --h01:#5a3cff;
+  --h02:oklch(.6 .16 62);
+  --h03:oklch(.58 .12 168);
+  --h04:oklch(.57 .12 232);
+  --h05:oklch(.52 .17 318);
+  --h06:oklch(.52 .19 352);
+
+  --rail:92px;
+  --gx:clamp(24px,5vw,72px);
+  --gy:clamp(40px,6vw,104px);
+
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:Archivo,system-ui,sans-serif;
+  font-weight:400;
+  font-size:clamp(16px,1.1vw,18px);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+[hidden]{display:none!important}
+
+::selection{background:#d6ccff}
+
+a{color:var(--violet-deep);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px;text-decoration-color:currentColor}
+a:hover{color:var(--violet)}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--violet);outline-offset:2px}
+
+/* ---------- scroll progress: one segment per section ----------
+   Reused from the Accelerator pitch build (#acts). Each segment fills
+   across its own section and takes the section hue, so the bar reports
+   where you are as well as how far you have come. */
+#prog{position:fixed;top:0;left:0;right:0;height:4px;z-index:90;display:flex;gap:2px}
+#prog .seg{flex:1;background:rgba(32,30,29,.16);position:relative;overflow:hidden}
+#prog .seg i{position:absolute;inset:0;width:0;background:var(--violet);
+  transition:width 140ms linear,background .5s var(--ease)}
+
+/* ---------- floating top bar ---------- */
+#topbar{position:fixed;top:4px;left:0;right:0;z-index:85;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:0 var(--gx) 0 calc(var(--rail) + var(--gx));
+  height:64px;background:rgba(243,242,242,.92);backdrop-filter:blur(8px);
+  border-bottom:2px solid var(--ink);
+  transform:translateY(-110%);transition:transform .45s var(--ease)}
+#topbar.show{transform:none}
+#topbar .mark .logo{height:26px}
+#topbar .mark b{font-size:16px}
+#topbar .mark .bar2{height:20px}
+#topbar .mark .qual{font-size:10.5px;letter-spacing:.15em}
+.btn{display:inline-flex;align-items:center;gap:10px;flex:none;
+  padding:11px 20px;background:var(--ink);color:var(--ground);
+  font-weight:800;font-size:13.5px;letter-spacing:.02em;text-decoration:none;
+  border:2px solid var(--ink);transition:background .3s var(--ease),color .3s var(--ease)}
+.btn:hover{background:var(--violet);border-color:var(--violet);color:var(--ground)}
+.btn:focus-visible{outline:2px solid var(--violet);outline-offset:3px}
+@media (max-width:900px){
+  #topbar{padding:0 var(--gx);height:56px;top:4px}
+  #topbar .mark .bar2,#topbar .mark .qual{display:none}
+  .btn{padding:9px 14px;font-size:12.5px}
+}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;padding:12px 18px;
+  background:var(--ink);color:var(--ground);font-weight:800;text-decoration:none}
+.skip:focus{left:0}
+
+/* ---------- logo wall ---------- */
+.wall{display:flex;flex-wrap:wrap;justify-content:center;
+  background:var(--ground);border:2px solid var(--ink);margin-top:clamp(26px,3.5vw,44px)}
+.wall .lg{background:var(--ground);display:grid;place-items:center;
+  padding:clamp(14px,1.6vw,22px);aspect-ratio:250/140;
+  flex:0 0 calc(100% / var(--cols,5));
+  box-shadow:inset 0 0 0 1px var(--n-200)}
+.wall .lg img{max-width:100%;height:auto;width:auto;max-height:100%}
+@media (max-width:1100px){.wall{--cols:3}}
+@media (max-width:620px){.wall{--cols:2}}
+
+/* ---------- contact form ---------- */
+.form{display:grid;gap:2px;background:var(--n-700);border:2px solid var(--n-700);margin-top:clamp(26px,3.5vw,44px);max-width:66ch}
+.form .f{background:var(--ink);padding:14px 18px}
+.form label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--n-400);margin-bottom:6px}
+.form input,.form textarea{width:100%;background:transparent;border:0;color:var(--ground);
+  font:inherit;font-size:16px;padding:0;resize:vertical}
+.form input:focus,.form textarea:focus{outline:none}
+.form .f:focus-within{background:#2a2827}
+.form textarea{min-height:84px}
+.form .act{background:var(--ink);padding:16px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.cmsg{margin:0;font-size:14px;color:var(--n-400);max-width:34ch}
+.cmsg.ok{color:#9be5c8}
+.cmsg.bad{color:#f0a0b8}
+.form.sent .f,.form.sent .act .btn{opacity:.45;pointer-events:none}
+
+/* ---------- numbered rail ---------- */
+#rail{
+  position:fixed;left:0;top:0;bottom:0;width:var(--rail);
+  border-right:2px solid var(--ink);
+  background:var(--ground);
+  z-index:80;
+  display:flex;align-items:center;justify-content:center;
+}
+#rail ol{list-style:none;margin:0;padding:0;position:relative}
+#rail li{height:60px;display:flex;align-items:center;justify-content:center}
+#rail a{
+  display:flex;align-items:center;justify-content:center;
+  width:var(--rail);height:60px;
+  font-weight:800;font-size:13px;letter-spacing:.1em;
+  color:var(--n-400);text-decoration:none;
+  position:relative;z-index:2;
+  transition:color .5s var(--ease);
+}
+#rail a.on{color:var(--ground)}
+#railind{
+  position:absolute;left:0;top:0;width:var(--rail);height:60px;
+  background:var(--violet);z-index:1;
+  transition:transform .5s var(--ease),background .5s var(--ease);
+}
+main{margin-left:var(--rail)}
+@media (max-width:900px){
+  #rail{display:none}
+  main{margin-left:0}
+}
+
+/* ---------- type ---------- */
+h1,h2,h3{margin:0;text-wrap:balance}
+.h1{font-size:clamp(33px,4.3vw,68px);font-weight:900;letter-spacing:-.032em;line-height:1;max-width:24ch}
+.h2{font-size:clamp(30px,4.2vw,68px);font-weight:900;letter-spacing:-.032em;line-height:1.06;max-width:20ch}
+.h3{font-size:clamp(20px,2.2vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1.2;max-width:24ch}
+p{margin:0 0 1.1em;max-width:74ch}
+p:last-child{margin-bottom:0}
+.lede{font-size:clamp(18px,1.35vw,21px)}
+.small{font-size:clamp(12.5px,.95vw,14px);line-height:1.5;color:var(--n-600)}
+.kicker{font-size:11px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;line-height:1;color:var(--n-500)}
+.kicker.grp{font-size:clamp(14px,1.25vw,18px);font-weight:900;letter-spacing:.13em;color:var(--hue,var(--violet))}
+.micro{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;line-height:1.2;color:var(--n-600)}
+strong{font-weight:800}
+
+/* ---------- sections ---------- */
+section{border-top:2px solid var(--ink);position:relative;scroll-margin-top:76px}
+@media (max-width:900px){section{scroll-margin-top:68px}}
+section:first-of-type{border-top:0}
+.pad{padding:var(--gy) var(--gx)}
+.ink{background:var(--ink);color:var(--ground)}
+.ink p{color:var(--n-200)}
+.ink .small{color:#bab6b6}
+.ink .kicker,.ink .micro{color:var(--n-400)}
+.ink a{color:var(--violet-dark-link)}
+
+/* sticky section header */
+.shead{position:sticky;top:0;z-index:20;background:var(--ground);border-bottom:2px solid var(--ink)}
+.shead .bar{height:6px}
+.shead .row{display:flex;align-items:baseline;gap:clamp(12px,2vw,28px);padding:14px var(--gx);flex-wrap:wrap}
+.shead .num{font-weight:900;font-size:clamp(20px,2vw,26px);letter-spacing:-.02em}
+.shead .ttl{font-weight:800;font-size:clamp(17px,1.6vw,22px);letter-spacing:-.018em}
+.shead .desc{font-size:13px;color:var(--n-600)}
+
+/* ---------- hero ---------- */
+#hero{position:relative;min-height:clamp(540px,74svh,880px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+#hero .shot{position:absolute;inset:0;z-index:0}
+#hero .shot img{width:100%;height:100%;object-fit:cover;object-position:center 42%;animation:drift 2.4s var(--ease) both}
+#hero .scrim{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to bottom,
+    rgba(243,242,242,.94) 0%,
+    rgba(243,242,242,.62) 38%,
+    rgba(243,242,242,.9) 78%,
+    rgba(243,242,242,1) 100%);
+}
+#hero .inner{position:relative;z-index:2;padding:var(--gy) var(--gx) clamp(32px,4vw,72px)}
+/* lockup: mark, wordmark, rule, qualifier. carried from the proposal build. */
+.mark{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.mark .logo{display:block;width:auto;height:36px;flex:none}
+.mark b{font-weight:900;letter-spacing:-.02em;font-size:20px;line-height:1}
+.mark .bar2{width:2px;height:26px;background:var(--ink);flex:none}
+.mark .qual{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;line-height:1.3;color:var(--ink)}
+#hero .mark{margin:0 0 clamp(30px,4.5vw,64px)}
+.foot .mark b,.foot .mark .qual{color:var(--ground)}
+.foot .mark .bar2{background:var(--n-500)}
+/* rail foot mark */
+#rail .rmark{position:absolute;bottom:clamp(18px,3vh,34px);left:0;width:var(--rail);text-align:center;
+  font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--n-500)}
+.wipe{clip-path:inset(100% 0 0 0);animation:wipeUp 1s var(--ease) .15s forwards}
+@keyframes wipeUp{to{clip-path:inset(0 0 0 0)}}
+@keyframes drift{from{transform:scale(1.12)}to{transform:scale(1)}}
+
+/* ---------- cell grids ---------- */
+.cells{display:grid;background:var(--ink);gap:2px;border:2px solid var(--ink)}
+.cells.c4{grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))}
+.cells.c3{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}
+.cell{background:var(--ground);padding:clamp(18px,2vw,26px)}
+.ink .cell{background:var(--ink)}
+.cell .fig{font-size:clamp(48px,5.4vw,86px);font-weight:900;letter-spacing:-.04em;line-height:.9;color:var(--violet);font-variant-numeric:tabular-nums}
+/* unit glyphs set small against the numeral, from the pitch build (.num i) */
+.cell .fig i{font-style:normal;font-size:.42em;letter-spacing:0}
+.ink .cell .fig{color:var(--violet-dark-link)}
+.cell .micro{margin-top:10px}
+
+/* content cards */
+.cards{display:grid;gap:2px;background:var(--ink);border:2px solid var(--ink);
+  grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
+.card{background:var(--ground);padding:clamp(18px,2vw,26px);display:flex;flex-direction:column;gap:10px}
+.card .hb{height:6px;width:100%}
+.card h4{margin:0;font-size:clamp(17px,1.5vw,21px);font-weight:800;letter-spacing:-.018em;line-height:1.15}
+.card p{font-size:clamp(13.5px,1vw,15px);color:var(--n-700);margin:0}
+/* which functions the problem bites in */
+.card .fnl{margin-top:auto;padding-top:14px;border-top:2px solid var(--n-200);color:var(--hue,var(--violet));
+  font-size:10.5px;letter-spacing:.11em;font-weight:700}
+.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.cards.two{grid-template-columns:1fr}}
+.cards.two .card{--hue:var(--h01)}
+
+/* callout */
+.callout{border-left:6px solid;padding:16px 20px;margin:28px 0}
+.callout .kicker{margin-bottom:6px}
+.callout p{margin:0;font-weight:500}
+
+/* poster panel */
+.poster{background:var(--ink);color:var(--ground);padding:clamp(36px,5vw,80px) var(--gx)}
+.poster .big{font-size:clamp(28px,3.6vw,54px);font-weight:800;letter-spacing:-.022em;line-height:1.1;max-width:34ch}
+.poster .sub{margin-top:18px;color:#bab6b6;max-width:60ch}
+
+/* value clause */
+.vc{font-weight:800;font-size:clamp(18px,1.7vw,24px);letter-spacing:-.018em;line-height:1.25;max-width:38ch;
+  border-top:2px solid var(--ink);padding-top:16px;margin-top:22px}
+.ink .vc{border-color:var(--n-700);color:var(--ground)}
+
+/* accordion */
+details{border-top:2px solid var(--ink)}
+details:last-of-type{border-bottom:2px solid var(--ink)}
+summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:64px 1fr 40px;align-items:center;gap:12px;padding:20px 0}
+summary::-webkit-details-marker{display:none}
+summary .n{font-weight:900;font-size:22px;letter-spacing:-.02em}
+summary .t{font-weight:800;font-size:clamp(17px,1.6vw,23px);letter-spacing:-.018em;line-height:1.2}
+summary .p{font-size:26px;color:var(--n-400);text-align:right;line-height:1}
+details[open] summary .p{transform:rotate(45deg)}
+summary .p{transition:transform .3s var(--ease)}
+details .body{padding:0 0 22px 64px;max-width:74ch}
+details .body p{font-size:clamp(14px,1.05vw,16px);color:var(--n-700)}
+@media (max-width:640px){
+  summary{grid-template-columns:40px 1fr 32px}
+  details .body{padding-left:40px}
+}
+
+/* timeline rows */
+.tl{border-top:2px solid var(--ink)}
+.tl .row{display:grid;grid-template-columns:clamp(76px,9vw,124px) 1fr;gap:clamp(14px,2vw,28px);
+  align-items:center;padding:16px 0;border-bottom:2px solid var(--n-200)}
+.tl .row:last-child{border-bottom:2px solid var(--ink)}
+.tl .st{font-weight:800;font-size:clamp(15px,1.3vw,19px);letter-spacing:-.015em}
+.tl .out{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.tl .chip{height:14px;width:clamp(60px,10vw,150px);flex:none}
+.tl .out span{font-size:clamp(13.5px,1vw,15.5px);color:var(--n-700)}
+
+/* case study, collapsed by default */
+.cases{border-top:2px solid var(--ink);margin-top:clamp(26px,3vw,44px)}
+.cases details{border-top:0;border-bottom:2px solid var(--ink)}
+.cases summary{grid-template-columns:44px 1fr 40px;padding:22px 0}
+.cases summary .t{font-weight:800}
+.cases .chip{width:26px;height:14px;flex:none}
+.cases .body{padding:0 0 26px 44px;max-width:none}
+@media (max-width:640px){.cases summary{grid-template-columns:28px 1fr 30px}.cases .body{padding-left:28px}}
+
+/* case study */
+.case{border-top:2px solid var(--ink);padding-top:clamp(26px,3vw,44px);margin-top:clamp(34px,4vw,60px)}
+.case .top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.case .chip{width:38px;height:14px;flex:none}
+.case .cname{font-weight:900;font-size:clamp(20px,2.4vw,30px);letter-spacing:-.022em;line-height:1.1;margin:0 0 6px}
+.case .deliv{color:var(--n-600);font-size:14px;margin-bottom:22px}
+.split{display:grid;gap:clamp(20px,3vw,48px);grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+.split .kicker{margin-bottom:8px}
+.split p{font-size:clamp(14px,1.05vw,16px);color:var(--n-700)}
+.case .figs{margin-top:26px}
+.case .close{margin-top:20px;font-weight:500;max-width:62ch}
+
+/* ---------- scroll scenes ----------
+   The pitch build's stage machine, carried over whole. A tall spacer
+   scrolls past a sticky full-height frame; the scroll position inside
+   the spacer resolves to an integer step, and each step reveals its
+   copy beat and calls the scene's own _apply. */
+.stage{position:relative;height:calc(var(--len,300) * 1vh)}
+.frame{position:sticky;top:0;height:100svh;overflow:hidden;
+  display:grid;grid-template-columns:minmax(0,34ch) minmax(0,1fr);
+  align-items:center;gap:clamp(24px,4vw,64px);
+  padding:clamp(96px,13vh,136px) var(--gx) clamp(28px,4vh,52px)}
+.frame .copy{grid-column:1;position:relative;z-index:3;max-width:44ch}
+.frame .copy p{max-width:none}
+.frame .viz{grid-column:2;position:relative;width:100%;height:100%;min-height:0;
+  display:flex;align-items:center;justify-content:center}
+.frame .viz svg{width:100%;height:100%}
+.frame.ink{background:var(--ink);color:var(--ground)}
+.frame.ink .h3{color:var(--ground)}
+.frame.ink .beat,.frame.ink p{color:var(--n-200)}
+.frame.ink .vc{border-color:var(--n-700);color:var(--ground)}
+.beats .blk h3{margin:0 0 12px}
+.beats .blk p{margin:0;font-size:clamp(15px,1.15vw,17.5px);line-height:1.5}
+.beats{display:grid;margin-top:22px}
+.beats>[data-at]{grid-area:1 / 1}
+[data-at]{opacity:0;transform:translateY(20px);
+  transition:opacity .62s var(--ease),transform .62s var(--ease)}
+[data-at].on{opacity:1;transform:none}
+[data-at].gone{opacity:0;transform:translateY(-14px)}
+.d{transition:opacity .62s var(--ease),fill .62s var(--ease),stroke .62s var(--ease),transform .62s var(--ease)}
+.ln{transition:opacity .62s var(--ease),stroke .62s var(--ease)}
+.beat{font-size:clamp(17px,1.45vw,21px);line-height:1.4;font-weight:500;margin:0}
+@media (max-width:900px){
+  .stage{height:auto}
+  .frame{position:static;height:auto;grid-template-columns:1fr;align-items:start;
+    gap:22px;padding:var(--gy) var(--gx)}
+  .frame .copy{max-width:none}
+  .frame .viz{grid-column:1;height:auto;aspect-ratio:1.05}
+  .beats{display:block}
+  .beats>[data-at]{opacity:1;transform:none;margin-bottom:14px}
+  .beats>[data-at].gone{opacity:1;transform:none}
+}
+
+/* ---------- rented versus owned: two panels, one comparison ---------- */
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:2px;
+  background:var(--ink);border:2px solid var(--ink);margin-top:clamp(30px,4vw,56px)}
+.duo .pane{background:var(--ground);padding:clamp(22px,2.6vw,34px)}
+.duo .pane.own{background:var(--ink);color:var(--ground)}
+.duo .top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:16px}
+.duo .own .top{border-color:var(--h04)}
+.duo h4{margin:0;font-size:clamp(20px,2vw,27px);font-weight:900;letter-spacing:-.022em}
+.duo .tag{font-size:10.5px;font-weight:700;letter-spacing:.18em;color:var(--n-500);flex:none}
+.duo .own .tag{color:var(--h04)}
+.duo p{font-size:clamp(14px,1.05vw,16px);color:var(--n-700);margin:0;max-width:52ch}
+.duo .own p{color:var(--n-200)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips span{border:2px solid var(--n-200);padding:6px 10px;font-size:10.5px;font-weight:700;
+  letter-spacing:.12em;color:var(--n-500);line-height:1}
+.mem{border-left:3px solid var(--h04);padding-left:15px;margin-top:20px}
+.mem h5{margin:0 0 5px;font-size:15.5px;font-weight:800;letter-spacing:-.01em;color:var(--ground)}
+.mem p{font-size:13.5px}
+
+/* ---------- beliefs: numbered, collapsed ---------- */
+.beliefs{margin-top:clamp(38px,5vw,70px)}
+.beliefs details{border-top:2px solid var(--ink)}
+.beliefs details:last-of-type{border-bottom:2px solid var(--ink)}
+.beliefs summary .n{color:var(--h04)}
+.beliefs .body{padding:0 0 26px 64px;max-width:78ch}
+.cal{border-left:3px solid var(--h04);background:var(--n-100);padding:15px 20px;margin-top:20px}
+.cal .kicker{margin-bottom:7px;color:var(--h04)}
+.cal p{margin:0;font-size:clamp(14px,1.05vw,16px);color:var(--n-700)}
+@media (max-width:640px){.beliefs .body{padding-left:40px}}
+
+/* ---------- diagram: scroll-driven concentric model ----------
+   Geometry, ring data and the scrub function are lifted from the
+   Accelerator pitch build (rings.js). A tall spacer scrolls past a
+   sticky full-height stage, so one ring resolves per scroll window
+   and the whole figure pulses inward once at the end. */
+#ringstage{position:relative}
+#ringframe{display:grid;grid-template-columns:minmax(0,36ch) minmax(0,1fr);
+  align-items:center;gap:clamp(24px,4vw,64px);
+  padding:var(--gy) var(--gx)}
+#ringframe .fig-wrap{max-height:74svh}
+#ringframe .rcopy{max-width:44ch}
+#ringframe .rcopy p{max-width:none}
+#ringframe .fig-wrap{display:grid;place-items:center;height:100%;min-height:0}
+#rings{width:auto;height:100%;max-width:100%;aspect-ratio:1;display:block}
+.dcap{margin-top:18px}
+@media (max-width:900px){
+  #ringframe{grid-template-columns:1fr;align-items:start;gap:24px}
+  #ringframe .rcopy{max-width:none}
+  #ringframe .fig-wrap{height:auto;max-height:none}
+  #rings{height:auto;width:100%}
+}
+
+/* footer */
+.foot{background:var(--ink);color:var(--ground);padding:clamp(44px,6vw,96px) var(--gx)}
+.foot .name{font-weight:900;font-size:clamp(26px,3.4vw,48px);letter-spacing:-.028em;line-height:1.05;margin:18px 0 10px}
+.foot .mail{font-size:clamp(18px,1.8vw,26px);font-weight:700}
+
+/* entrances */
+.r,.rs{opacity:0}
+.r{transform:translateY(28px)}
+.rs{transform:translateY(14px)}
+.r.in,.rs.in{opacity:1;transform:none;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.gx{transform:scaleX(0);transform-origin:left}
+.gx.in{transform:scaleX(1);transition:transform .8s var(--ease)}
+.st1.in{transition-delay:.08s}.st2.in{transition-delay:.16s}.st3.in{transition-delay:.24s}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001s!important;animation-delay:0s!important;transition-duration:.001s!important}
+  .r,.rs{opacity:1;transform:none}
+  .gx{transform:scaleX(1)}
+  .wipe{clip-path:inset(0 0 0 0);animation:none}
+  #hero .shot img{animation:none}
+}
+
+/* ---------- figures ---------- */
+figure{margin:0}
+.fig-b{border:2px solid var(--ink);background:var(--ink)}
+.fig-b img{width:100%;height:auto;display:block;filter:saturate(.4) contrast(1.12)}
+figcaption{font-size:11px;line-height:1.45;color:var(--n-700);padding-top:10px;border-top:2px solid var(--ink);margin-top:12px;max-width:64ch}
+.ink figcaption{color:#bab6b6;border-color:var(--n-700)}
+.fw{margin-left:calc(var(--gx) * -1);margin-right:calc(var(--gx) * -1)}
+.fw .fig-b{border-left:0;border-right:0}
+.fw figcaption{margin-left:var(--gx);margin-right:var(--gx)}
+.split-img{display:grid;gap:clamp(20px,3vw,44px);align-items:start;
+  grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
+
+/* ---------- image bands: type over photograph, hero construction ---------- */
+.band{position:relative;overflow:hidden;border-top:2px solid var(--ink);
+  min-height:clamp(400px,70svh,720px);display:flex;align-items:center}
+.band>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:saturate(.4) contrast(1.12);z-index:0}
+.bscrim{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to bottom,
+    rgba(243,242,242,.94) 0%,
+    rgba(243,242,242,.62) 38%,
+    rgba(243,242,242,.9) 78%,
+    rgba(243,242,242,1) 100%)}
+.binner{position:relative;z-index:2;width:100%;padding:clamp(34px,5vw,76px) var(--gx);text-align:center}
+.bline{font-size:clamp(27px,3.7vw,56px);font-weight:800;letter-spacing:-.024em;
+  line-height:1.08;max-width:24ch;margin:0 auto;text-wrap:balance}
+.bsub{margin:16px auto 0;font-size:clamp(16px,1.2vw,19px);color:var(--n-700);max-width:52ch;text-wrap:balance}
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+<div id="prog" aria-hidden="true"></div>
+
+<div id="topbar">
+  <div class="mark"><img class="logo" src="/img/mark.png" alt=""><b>Brand Nexus AI</b><div class="bar2"></div><div class="qual">Enterprise AI strategy and transformation</div></div>
+  <a class="btn" href="#contact">Contact us</a>
+</div>
+
+<nav id="rail" aria-label="Sections">
+  <ol>
+    <div id="railind" aria-hidden="true"></div>
+    <li><a href="#s00" data-i="0">00</a></li>
+    <li><a href="#s01" data-i="1">01</a></li>
+    <li><a href="#s02" data-i="2">02</a></li>
+    <li><a href="#s03" data-i="3">03</a></li>
+    <li><a href="#s04" data-i="4">04</a></li>
+    <li><a href="#s05" data-i="5">05</a></li>
+    <li><a href="#s06" data-i="6">06</a></li>
+  </ol>
+  <div class="rmark" aria-hidden="true">BNAI</div>
+</nav>
+
+<main id="main">
+
+<!-- ================= 00 THE STAKE ================= -->
+<section id="s00">
+  <div id="hero">
+    <div class="shot"><img fetchpriority="high" src="/img/hero.webp" srcset="/img/hero@half.webp 800w, /img/hero.webp 1600w" sizes="(max-width:900px) 100vw, 90vw" alt="A working session at a wall of paper in an open office"></div>
+    <div class="scrim"></div>
+    <div class="inner">
+      <header class="mark r"><img class="logo" src="/img/mark.png" alt=""><b>Brand Nexus AI</b><div class="bar2"></div><div class="qual">Enterprise AI strategy and transformation</div></header>
+      <h1 class="h1 wipe">Whatever makes you hard to beat took decades to build. It is being rebuilt in months.</h1>
+      <p class="lede r" style="margin-top:clamp(20px,2.4vw,34px);max-width:62ch">Scale, brand, distribution, the relationships that took a generation to build. Every one of them is getting cheaper to copy each quarter. What replaces them is an operating model with AI underneath it, and it is being assembled right now inside somebody's company. Probably not yours yet.</p>
+    </div>
+  </div>
+
+  <div class="pad" style="padding-top:0">
+    <div class="cells c4">
+      <div class="cell r st0"><div class="fig">25</div><div class="micro">Years in AI</div></div>
+      <div class="cell r st1"><div class="fig">40</div><div class="micro">Fortune 500 engagements</div></div>
+      <div class="cell r st2"><div class="fig">100+</div><div class="micro">Enterprises upskilled</div></div>
+      <div class="cell r st3"><div class="fig">60+</div><div class="micro">AI workshops</div></div>
+    </div>
+    <p class="lede r" style="margin-top:32px;max-width:66ch">We have helped dozens of enterprises become AI native. We design the operating model and we build the systems, and we have watched the value compound from there.</p>
+
+  </div>
+</section>
+
+<!-- ================= 01 WHAT IS ACTUALLY WRONG ================= -->
+<section id="s01">
+  <div class="shead">
+    <div class="bar" style="background:var(--h01)"></div>
+    <div class="row"><span class="num" style="color:var(--h01)">01</span><span class="ttl">What is actually wrong</span><span class="desc">Two you do not control. Four you chose.</span></div>
+  </div>
+  <div class="pad">
+    <h2 class="h2 r">Nothing on this list will surprise you.</h2>
+    <p class="lede r rs" style="margin-top:26px">Every company we walk into shares a long list of problems, and these six come up every time. Every one of them is ordinary and every one is well known. What is surprising is how they got there, and that comes later.</p>
+
+    <div class="kicker grp r" style="--hue:var(--h01);margin:clamp(38px,5vw,64px) 0 16px">Outside</div>
+    <div class="cards two r">
+      <div class="card"><div class="hb" style="background:var(--h01)"></div><h4>Someone stands between you and the person who uses what you sell</h4><p>A retailer, a distributor, a broker, an employer, a platform, a channel partner. Most of what you sell reaches a person through somebody else. By the time a signal reaches you it is a quarter old and it is another company's summary of it.</p><div class="micro fnl">Sales · Service · Marketing</div></div>
+      <div class="card"><div class="hb" style="background:var(--h01)"></div><h4>How you get found and evaluated moved</h4><p>Buyers build the shortlist by asking an AI before they contact anyone. Candidates and partners do the same. You either come back accurately or you do not come back at all.</p><div class="micro fnl">Sales · Marketing · Talent</div></div>
+    </div>
+    <p class="r" style="margin-top:22px;font-weight:600">Neither of these is a problem you can outspend.</p>
+
+    <div class="kicker grp r" style="--hue:var(--h01);margin:clamp(38px,5vw,64px) 0 16px">Inside</div>
+    <div class="cards two r">
+      <div class="card"><div class="hb" style="background:var(--h01)"></div><h4>You plan against a picture that is already out of date</h4><p>The forecast, the pipeline, the workforce plan and the segment all describe a company and a customer that have moved. Nothing tells you which half is wrong.</p><div class="micro fnl">Finance · Sales · HR · Marketing</div></div>
+      <div class="card"><div class="hb" style="background:var(--h01)"></div><h4>The repeatable work is still done by hand</h4><p>The close, the quote, the screen, the exception. Work that runs the same way every time is done in sequence, by people waiting on each other. Opportunities close faster than the process moves.</p><div class="micro fnl">Finance · Sales · HR · Operations</div></div>
+      <div class="card"><div class="hb" style="background:var(--h01)"></div><h4>What the company knows does not accumulate</h4><p>Why the deal was won. What the vendor conceded last time. How the process actually runs. It sits in files, inboxes and heads, and when the person leaves it goes with them.</p><div class="micro fnl">Every function</div></div>
+      <div class="card"><div class="hb" style="background:var(--h01)"></div><h4>Nobody can see what the work actually costs</h4><p>The spend sits across agencies, licences, contractors and people's time. No single line tells you what a process costs to run, so nothing gets fixed against evidence.</p><div class="micro fnl">Finance · Operations · Procurement</div></div>
+    </div>
+  </div>
+  <div class="band">
+    <img loading="lazy" decoding="async" src="/img/band-seven.webp" srcset="/img/band-seven@half.webp 800w, /img/band-seven.webp 1600w" sizes="(max-width:900px) 100vw, 90vw" alt="A meeting room at dusk with the day's work still on the table">
+    <div class="bscrim"></div>
+    <div class="binner">
+      <p class="bline r">Six problems, and they are the ones you already know about.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 THE HINGE ================= -->
+<section id="s02" class="ink">
+  <div class="shead" style="background:var(--ink);border-bottom-color:var(--n-700)">
+    <div class="bar" style="background:var(--h02)"></div>
+    <div class="row"><span class="num" style="color:var(--h02)">02</span><span class="ttl" style="color:var(--ground)">The hinge</span><span class="desc" style="color:var(--n-400)">What the market sells you, and why it makes this worse.</span></div>
+  </div>
+  <div class="stage" style="--len:231">
+    <div class="frame ink">
+      <div class="copy">
+        <div class="kicker" style="color:var(--h02);margin-bottom:20px">What most companies do</div>
+        <div class="beats" style="margin-top:0">
+        <div class="blk" data-at="0">
+          <h3 class="h3">Six problems.</h3>
+          <p>You already know every one of them. Here is what the market sells you against them.</p>
+        </div>
+        <div class="blk" data-at="1">
+          <h3 class="h3">A tool for each one.</h3>
+          <p>Every one arrives with its own system, its own workflow, and its own line of fixed cost.</p>
+        </div>
+        <div class="blk" data-at="2">
+          <h3 class="h3">Nothing passes between them.</h3>
+          <p>The organization comes out more fragmented than it went in, and the work goes up rather than down. Six purchases, and a company exactly as smart as it was before.</p>
+        </div>
+        <div class="blk" data-at="3">
+          <h3 class="h3">They are one problem showing up in six places.</h3>
+          <p>Your company is not built to get smarter. Everything on that list is a symptom of it.</p>
+        </div>
+        <div class="blk" data-at="4">
+          <h3 class="h3">One thing solves all six at once, and it is not a purchase.</h3>
+          <p>Everything after this is a means. There is one end, and it is value that compounds. If a piece of it does not lead there, we would not build it.</p>
+        </div>
+        </div>
+      </div>
+      <div class="viz"><svg data-viz="hinge" data-steps="5" viewBox="0 0 1000 1000" role="img" aria-label="Six problems, each with the tool the market sells against it, then the gaps between them, then all six resolving into one problem: the company is not built to get smarter."></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 WHAT AI NATIVE MEANS ================= -->
+<section id="s03">
+  <div class="shead">
+    <div class="bar" style="background:var(--h03)"></div>
+    <div class="row"><span class="num" style="color:var(--h03)">03</span><span class="ttl">What AI native means</span><span class="desc">Four things have to be true. None of them is a purchase.</span></div>
+  </div>
+  <div class="pad">
+    <h2 class="h2 r">Four things have to be true.</h2>
+    <p class="lede r rs" style="margin-top:26px">Adding AI to the tools you already run gets you faster versions of the work you already do. That is worth something and it is not this. What follows is the operating model underneath, and the order it has to be built in.</p>
+
+    <div style="margin-top:clamp(44px,6vw,88px)">
+      <h3 class="h3 r">What you know is in four states, and none of them is useful.</h3>
+      <div class="cards r" style="margin-top:24px">
+        <div class="card"><div class="hb" style="background:var(--h03)"></div><h4>Fragmented</h4><p>What one team learns never reaches the next. The islands do not touch.</p></div>
+        <div class="card"><div class="hb" style="background:var(--h03)"></div><h4>Dated</h4><p>Half of it describes a customer who has moved on, and nothing tells you which half.</p></div>
+        <div class="card"><div class="hb" style="background:var(--h03)"></div><h4>Inaccessible</h4><p>Locked in a system nobody queries, or in a head that is in a meeting.</p></div>
+        <div class="card"><div class="hb" style="background:var(--h03)"></div><h4>And then it leaves</h4><p>When someone goes, the reason the decision worked goes with them. Decades of operating, and almost none of it accumulating.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="band">
+    <img loading="lazy" decoding="async" src="/img/band-objection.webp" srcset="/img/band-objection@half.webp 800w, /img/band-objection.webp 1600w" sizes="(max-width:900px) 100vw, 90vw" alt="Colleagues in conversation on a mezzanine above an atrium">
+    <div class="bscrim"></div>
+    <div class="binner">
+      <p class="bline r">That is not a failure of your people. They were never given anywhere to put it.</p>
+    </div>
+  </div>
+
+
+  <div class="stage" style="--len:165;border-top:2px solid var(--ink);background:var(--n-100)">
+    <div class="frame">
+      <div class="copy">
+        <div class="kicker" style="color:var(--h03)">Component one</div>
+        <h3 class="h3" style="margin-top:12px">One memory.</h3>
+        <div class="beats">
+      <p class="beat" data-at="0">Four islands of what you know. What one team learns never reaches the next.</p>
+      <p class="beat" data-at="1">Join them and the islands become one graph. Current, connected, open to anyone who asks.</p>
+      <p class="beat" data-at="2">The same three people leave. This time nothing goes with them.</p>
+        </div>
+        <div class="vc" style="margin-top:26px">What that buys you is decisions that stop being made twice.</div>
+        <p class="small" style="margin-top:20px;color:var(--n-600)">Most companies already have a name for this, invented years ago by their own people for the thing they wished existed. Use yours.</p>
+      </div>
+      <div class="viz"><svg data-viz="inst" data-steps="3" viewBox="0 0 1000 1000" role="img" aria-label="One memory. Four islands of what you know. What one team learns never reaches the next. Join them and the islands become one graph. Current, connected, open to anyone who asks. The same three people leave. This time nothing goes with them."></svg></div>
+    </div>
+  </div>
+  <div class="stage" style="--len:187;border-top:2px solid var(--ink)">
+    <div class="frame">
+      <div class="copy">
+        <div class="kicker" style="color:var(--h03)">Component two</div>
+        <h3 class="h3" style="margin-top:12px">Operational memory remembers. Strategic memory learns.</h3>
+        <div class="beats">
+      <p class="beat" data-at="0">A result lands in one part of the business.</p>
+      <p class="beat" data-at="1">It becomes a recommendation in another, wherever the same conditions hold.</p>
+      <p class="beat" data-at="2">Then it does that everywhere at once. Nobody drew those lines. Nobody was in all of those rooms.</p>
+        </div>
+        <div class="vc" style="margin-top:26px">What that buys you is one team's budget producing the whole company's learning.</div>
+      </div>
+      <div class="viz"><svg data-viz="strat" data-steps="3" viewBox="0 0 1000 1000" role="img" aria-label="Operational memory remembers. Strategic memory learns. A result lands in one part of the business. It becomes a recommendation in another, wherever the same conditions hold. Then it does that everywhere at once. Nobody drew those lines. Nobody was in all of those rooms."></svg></div>
+    </div>
+  </div>
+  <div class="stage" style="--len:165;border-top:2px solid var(--ink);background:var(--n-100)">
+    <div class="frame">
+      <div class="copy">
+        <div class="kicker" style="color:var(--h03)">Component three</div>
+        <h3 class="h3" style="margin-top:12px">Departments exist because one person could only hold so much.</h3>
+        <div class="beats">
+      <p class="beat" data-at="0">An org chart sorts people by who they report to.</p>
+      <p class="beat" data-at="1">The unit of analysis moves from the department to the work.</p>
+      <p class="beat" data-at="2">Four bands. Every one has a human in it. What changes is what the person is for.</p>
+        </div>
+        <div class="vc" style="margin-top:26px">What that buys you is capacity that does not arrive as headcount.</div>
+      </div>
+      <div class="viz"><svg data-viz="work" data-steps="3" viewBox="0 0 1000 1000" role="img" aria-label="Departments exist because one person could only hold so much. An org chart sorts people by who they report to. The unit of analysis moves from the department to the work. Four bands. Every one has a human in it. What changes is what the person is for."></svg></div>
+    </div>
+  </div>
+  <div class="band">
+    <img loading="lazy" decoding="async" src="/img/band-glass.webp" srcset="/img/band-glass@half.webp 800w, /img/band-glass.webp 1600w" sizes="(max-width:900px) 100vw, 90vw" alt="A hand redrawing a workflow on a glass wall, each step marked agent or human">
+    <div class="bscrim"></div>
+    <div class="binner">
+      <p class="bline r">Every band has a human in it. What changes is what the person is for.</p>
+    </div>
+  </div>
+
+  <div class="stage" style="--len:176;border-top:2px solid var(--ink)">
+    <div class="frame">
+      <div class="copy">
+        <div class="kicker" style="color:var(--h03)">Component four</div>
+        <h3 class="h3" style="margin-top:12px">Agents produce. Your experts lead.</h3>
+        <div class="beats">
+      <p class="beat" data-at="0">Agents do the work, at whatever volume you need.</p>
+      <p class="beat" data-at="1">Every path out runs through someone qualified to judge it.</p>
+      <p class="beat" data-at="2">An expert in the loop, not a human in the loop. A generic approver waves work through and catches nothing.</p>
+        </div>
+        <div class="vc" style="margin-top:26px">What that buys you is speed you can actually ship, in a business where a mistake is expensive.</div>
+      </div>
+      <div class="viz"><svg data-viz="harness" data-steps="3" viewBox="0 0 1000 1000" role="img" aria-label="Agents produce. Your experts lead. Agents do the work, at whatever volume you need. Every path out runs through someone qualified to judge it. An expert in the loop, not a human in the loop. A generic approver waves work through and catches nothing."></svg></div>
+    </div>
+  </div>
+  <div class="band">
+    <img loading="lazy" decoding="async" src="/img/band-bench.webp" srcset="/img/band-bench@half.webp 800w, /img/band-bench.webp 1600w" sizes="(max-width:900px) 100vw, 90vw" alt="Two people reviewing work together at a bench">
+    <div class="bscrim"></div>
+    <div class="binner">
+      <p class="bline r">An expert in the loop, not a human in the loop.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 THE ORDER AND THE MODEL ================= -->
+<section id="s04">
+  <div class="shead">
+    <div class="bar" style="background:var(--h04)"></div>
+    <div class="row"><span class="num" style="color:var(--h04)">04</span><span class="ttl">What it takes to be AI native</span><span class="desc">The model is a rental. The mind is the moat.</span></div>
+  </div>
+
+  <div class="pad">
+    <h2 class="h2 r">The model is a rental. The mind is the moat.</h2>
+    <p class="lede r rs" style="margin-top:26px;max-width:70ch">Most companies think going AI native means buying tools and giving everyone a seat. That is the fastest way to spend real money and change almost nothing. It is an operating model your people lead and the company owns. Five beliefs shape how we build it.</p>
+
+    <div class="duo r">
+      <div class="pane">
+        <div class="top"><h4>The brain</h4><span class="tag">RENTED</span></div>
+        <p>Whatever model is ahead this quarter, you rent it, and so does everyone else. Next quarter the ranking flips. There is no advantage in the brain.</p>
+        <div class="chips"><span>ChatGPT</span><span>Gemini</span><span>Claude</span><span>Kimi</span><span>Grok</span><span>DeepSeek</span><span>Nemotron</span><span>MiniMax</span><span>Muse</span><span>GLM</span><span>Qwen</span><span>Inkling</span></div>
+      </div>
+      <div class="pane own">
+        <div class="top"><h4>The mind</h4><span class="tag">OWNED</span></div>
+        <p>Persistent memory you own and control. A competitor can buy your tools. They cannot buy what you have learned.</p>
+        <div class="mem">
+          <h5>Operational memory</h5>
+          <p>Remembers what happened, when, and who did it, so nothing is lost when someone leaves.</p>
+        </div>
+        <div class="mem">
+          <h5>Strategic memory</h5>
+          <p>Learns from every engagement and every signal you feed it, and turns that into compounding value.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="beliefs r">
+    <details>
+      <summary><span class="n">1</span><span class="t">The model is a commodity. The memory is not.</span><span class="p">+</span></summary>
+      <div class="body">
+        <p>Whatever is ahead this quarter, you rent it and so does your competitor. What you own is the memory: what happened, when, who did it, and what came of it. That is the asset, and it is the one thing a competitor cannot rent.</p>
+        <div class="cal"><div class="kicker">What this means for you</div><p>Do not pour what your company knows into someone else’s platform, where they keep the memory that compounds. We have watched a company build months of work on a single model and lose access when the vendor changed terms. The work stranded overnight.</p></div>
+      </div>
+    </details>
+    <details>
+      <summary><span class="n">2</span><span class="t">Compounding value is the only moat that holds.</span><span class="p">+</span></summary>
+      <div class="body">
+        <p>Faster and cheaper is the smaller half. The bigger half is that the signal reaching your customer comes back, lands in memory, and belongs to every part of the business. One team runs the test. The whole company has the answer.</p>
+        <div class="cal"><div class="kicker">What this means for you</div><p>Judge every build by whether it makes the next one cheaper and whether it feeds what you know. If it does neither, it is a project rather than a capability.</p></div>
+      </div>
+    </details>
+    <details>
+      <summary><span class="n">3</span><span class="t">Scale AI, do not be scaled by it.</span><span class="p">+</span></summary>
+      <div class="body">
+        <p>The tool should bend to how your business runs. What usually happens is the reverse. The workflow gets rebuilt around what the platform supports, and the company inherits somebody else’s operating model by accident.</p>
+        <div class="cal"><div class="kicker">What this means for you</div><p>Decide the operating model first and choose the tools against it. That order is the whole difference.</p></div>
+      </div>
+    </details>
+    <details>
+      <summary><span class="n">4</span><span class="t">What gets redesigned is the work.</span><span class="p">+</span></summary>
+      <div class="body">
+        <p>Buying seats changes who has access. It leaves untouched who does what, in what order, with what checks. Roles, workflows and governance are the redesign, and they are the part nobody sells you.</p>
+        <div class="cal"><div class="kicker">What this means for you</div><p>Budget for the redesign, not just the licences. The licences are the small number.</p></div>
+      </div>
+    </details>
+    <details>
+      <summary><span class="n">5</span><span class="t">Transformation is mostly change management.</span><span class="p">+</span></summary>
+      <div class="body">
+        <p>The technology is the part that works. The hard part is several hundred people changing how they do their jobs, with their incentives, their tooling and their managers all pointing the same way.</p>
+        <div class="cal"><div class="kicker">What this means for you</div><p>If the plan has no adoption workstream, it has no plan. Assume the majority of the effort sits there.</p></div>
+      </div>
+    </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 WORTH AND PROOF ================= -->
+<section id="s05">
+  <div class="shead">
+    <div class="bar" style="background:var(--h05)"></div>
+    <div class="row"><span class="num" style="color:var(--h05)">05</span><span class="ttl">What it is worth</span><span class="desc">What compounding is worth, and three times we have built it.</span></div>
+  </div>
+
+  <div class="stage" style="--len:210">
+    <div class="frame">
+      <div class="copy">
+        <h2 class="h2" style="font-size:clamp(28px,3.4vw,52px)">Compounding value.</h2>
+        <div class="beats">
+        <div class="blk" data-at="0">
+          <h3 class="h3">Twelve cycles.</h3>
+          <p>Both companies run the same number of them. Same year, same budget, same people.</p>
+        </div>
+        <div class="blk" data-at="1">
+          <h3 class="h3">One of them keeps what it learned.</h3>
+          <p>The other starts over every time, because nothing it worked out last cycle survived into this one.</p>
+        </div>
+        <div class="blk" data-at="2">
+          <h3 class="h3">Faster and cheaper are the same curve.</h3>
+          <p>Faster is an idea reaching the market before the quarter turns. Cheaper is the cost of running the business, not a line you trimmed once.</p>
+        </div>
+        <div class="blk" data-at="3">
+          <h3 class="h3">Month six beats month one.</h3>
+          <p>And the gap widens without anyone managing it. By month twelve the two companies are not competing on the same curve.</p>
+        </div>
+        </div>
+      </div>
+      <div class="viz"><svg data-viz="compound" data-steps="4" viewBox="0 0 1000 1000" role="img" aria-label="Two tracks across twelve cycles. One company holds flat because it starts over each time. The other compounds because it keeps what it learned, and the gap between them widens."></svg></div>
+    </div>
+  </div>
+
+  <div class="pad" style="border-top:2px solid var(--ink)">
+    <div class="kicker grp r" style="--hue:var(--h05)">The proof</div>
+    <h3 class="h3 r" style="margin-top:14px">Three engagements, and what came out of them.</h3>
+    <p class="small r" style="margin-top:14px;max-width:60ch">Every client is anonymised. The figures are as delivered.</p>
+
+  <div class="cases">
+    <details>
+      <summary><span class="chip" style="background:var(--h05)"></span><span class="t">A global beverage company, one hundred and thirty brands</span><span class="p">+</span></summary>
+      <div class="body">
+        <p class="deliv">Assessment at scale, and the first build out of it.</p>
+        <div class="split">
+          <div><div class="kicker">Challenge</div><p>Decades of operating knowledge sitting in files, decks and people's heads, and no way to act on any of it at portfolio scale.</p></div>
+          <div><div class="kicker">Solution</div><p>We mapped eighty two ways to be faster, cheaper and better across the business, and scored every one on value, feasibility and what it unlocked downstream.</p></div>
+        </div>
+        <div class="cells c3 figs"><div class="cell"><div class="fig">82</div><div class="micro">Opportunities mapped</div></div><div class="cell"><div class="fig">$20K</div><div class="micro">Replacing a $400K vendor line</div></div><div class="cell"><div class="fig">4</div><div class="micro">Weeks to live</div></div></div>
+        <p class="close">One line, in one function, out of eighty two.</p>
+      </div>
+    </details>
+    <details>
+      <summary><span class="chip" style="background:var(--h05)"></span><span class="t">A pharmaceutical manufacturer</span><span class="p">+</span></summary>
+      <div class="body">
+        <p class="deliv">A single deep intervention, with revenue attached.</p>
+        <div class="split">
+          <div><div class="kicker">Challenge</div><p>Half the prescriptions written for one drug were never filled. Patients got confused partway through the process and stopped, and nobody knew which patients until it had already happened.</p></div>
+          <div><div class="kicker">Solution</div><p>We built the ability to spot at-risk patients before they dropped out, with guidance where guidance was enough and a referral to a nurse practitioner where it was not.</p></div>
+        </div>
+        <div class="cells c3 figs"><div class="cell"><div class="fig">$174M</div><div class="micro">Incremental revenue, six months</div></div><div class="cell"><div class="fig">+22<i>%</i></div><div class="micro">Patient satisfaction</div></div></div>
+        <p class="close">The agent did not replace the nurse. It found the patients the nurse never knew were in trouble.</p>
+      </div>
+    </details>
+    <details>
+      <summary><span class="chip" style="background:var(--h05)"></span><span class="t">A health insurer selling through employers</span><span class="p">+</span></summary>
+      <div class="body">
+        <p class="deliv">An intermediary hiding the end customer.</p>
+        <div class="split">
+          <div><div class="kicker">Challenge</div><p>The company could not see its own customers. An employer sat in the middle of every relationship, so the people using the product were invisible to the company selling it.</p></div>
+          <div><div class="kicker">Solution</div><p>We identified who those customers actually were and built the ability to reach them directly with something relevant.</p></div>
+        </div>
+        <div class="cells c3 figs"><div class="cell"><div class="fig">+8<i>%</i></div><div class="micro">Annual sales</div></div><div class="cell"><div class="fig">+84<i>%</i></div><div class="micro">Match rate</div></div><div class="cell"><div class="fig">+53<i>%</i></div><div class="micro">Return on ad spend</div></div></div>
+        <p class="close">An intermediary standing between a company and its customer is the most common version of this problem, and it is rarely the one being worked on.</p>
+      </div>
+    </details>
+  </div>
+    <p class="r" style="margin-top:clamp(30px,4vw,52px)"><a class="btn" href="#contact">Talk to us about your business</a></p>
+  </div>
+</section>
+
+<!-- ================= 06 HOW WE WORK ================= -->
+<section id="s06">
+  <div class="shead">
+    <div class="bar" style="background:var(--h06)"></div>
+    <div class="row"><span class="num" style="color:var(--h06)">06</span><span class="ttl">How we work</span><span class="desc">How an engagement starts, what else we do, and who we are.</span></div>
+  </div>
+  <div class="pad">
+    <h2 class="h2 r">We do not arrive with a product.</h2>
+    <div style="margin-top:26px;max-width:74ch">
+      <p class="r">What we build is specific to your business. It starts with a deep assessment of where the value actually is. Not a survey. A hard read on how the work moves today, and on where the money is already going.</p>
+      <p class="r">For a company of any size that can be as many as a hundred opportunities. Every one scored on business value, on feasibility, and on whether it unlocks anything downstream. Quick wins, major projects and moonshots side by side, so the choice gets made against evidence rather than instinct.</p>
+      <p class="r">The first three get architected. The one we sequence first usually scores highest on value and lowest on feasibility of anything in the wave. It is the hardest thing to build and it demonstrates the worst, and it still goes first, because everything after it gets cheaper.</p>
+      <p class="r" style="font-weight:600">All three sit on the same memory. Which is why the second costs less than the first, and the third costs less than the second.</p>
+    </div>
+
+    <div class="kicker grp r" style="--hue:var(--h06);margin:clamp(38px,5vw,64px) 0 10px">The Accelerator</div>
+    <div class="tl r">
+      <div class="row"><span class="st">Assess</span><span class="out"><i class="chip gx" style="background:var(--h06);width:20%"></i><span>A clear read on how the work actually moves today</span></span></div>
+      <div class="row"><span class="st">Discover</span><span class="out"><i class="chip gx" style="background:var(--h06);width:40%"></i><span>The opportunity set, from working sessions inside your business</span></span></div>
+      <div class="row"><span class="st">Prioritize</span><span class="out"><i class="chip gx" style="background:var(--h06);width:60%"></i><span>Every opportunity scored on value, feasibility and downstream unlock</span></span></div>
+      <div class="row"><span class="st">Design</span><span class="out"><i class="chip gx" style="background:var(--h06);width:80%"></i><span>Architecture, roles and workflows for the first three</span></span></div>
+      <div class="row"><span class="st">Transfer</span><span class="out"><i class="chip gx" style="background:var(--h06);width:100%"></i><span>Your team running the cycle, first with us present, then without</span></span></div>
+    </div>
+    <p class="r" style="margin-top:18px;font-weight:600">Six to twelve weeks. Every stage ends on something usable.</p>
+
+    <div style="margin-top:clamp(38px,5vw,64px)">
+      <h3 class="h3 r">The curve starts in week eight.</h3>
+      <div style="margin-top:18px;max-width:74ch">
+        <p class="r">Week two you see your own operation clearly. Week eight the memory starts and the curve begins. By week twelve your team is running the cycle without us.</p>
+      </div>
+    </div>
+  </div>
+  <div class="band">
+    <img loading="lazy" decoding="async" src="/img/band-crossing.webp" srcset="/img/band-crossing@half.webp 800w, /img/band-crossing.webp 1600w" sizes="(max-width:900px) 100vw, 90vw" alt="A bridge over an atrium above a wide timber stair where people sit working">
+    <div class="bscrim"></div>
+    <div class="binner">
+      <p class="bline r">Compounding starts the day the memory starts.</p>
+      <p class="bsub rs">Every month without it is a month of learning thrown away. You cannot buy those months back, and you cannot catch up by spending more.</p>
+    </div>
+  </div>
+
+
+  <div class="pad" style="border-top:2px solid var(--ink);background:var(--n-100)">
+    <div class="kicker r">The rest of what we do</div>
+    <p class="r" style="margin:12px 0 26px;max-width:66ch">The Accelerator is where most engagements start. Here is the rest.</p>
+    <div class="r">
+      <details>
+        <summary><span class="n" style="color:var(--h06)">1</span><span class="t">Upskilling</span><span class="p">+</span></summary>
+        <div class="body"><p>Enterprise teams trained in generative AI, from executive fluency to working practice. Runs before an engagement, inside one, or on its own. A hundred and more enterprises have been through it.</p></div>
+      </details>
+      <details>
+        <summary><span class="n" style="color:var(--h06)">2</span><span class="t">Systems architecture</span><span class="p">+</span></summary>
+        <div class="body"><p>When a prioritized opportunity needs building, we architect the system and stand it up with your team or with a build partner. You own it.</p></div>
+      </details>
+      <details>
+        <summary><span class="n" style="color:var(--h06)">3</span><span class="t">Fractional Chief AI Officer</span><span class="p">+</span></summary>
+        <div class="body"><p>The leadership rather than the build. For companies that know what they need to do and need someone accountable for it inside the business.</p></div>
+      </details>
+      <details>
+        <summary><span class="n" style="color:var(--h06)">4</span><span class="t">Continuity</span><span class="p">+</span></summary>
+        <div class="body"><p>Architecture stays current as models, governance and the vendor landscape shift. Strategic, not operational. We are not running your platform.</p></div>
+      </details>
+    </div>
+  </div>
+
+  <div class="pad" style="border-top:2px solid var(--ink)">
+    <div class="kicker grp r" style="--hue:var(--h06)">Who you get</div>
+    <h3 class="h3 r" style="margin-top:14px">Every engagement gets a team built for it.</h3>
+    <div style="margin-top:20px;max-width:74ch">
+      <p class="r">Strategy, architecture, engineering, change management, facilitation. We assemble against what the work actually needs, so you are not paying for a bench and you are not waiting on one either.</p>
+      <p class="r">Founded by Pedro Laboy, previously a Managing Director at Accenture.</p>
+    </div>
+    <div class="kicker grp r" style="--hue:var(--h06);margin:clamp(44px,6vw,76px) 0 4px">Where this work has been done</div>
+    <div class="wall r">
+        <div class="lg"><img src="/img/logo-cigna.webp" alt="Cigna" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-dell.webp" alt="Dell" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-intel.webp" alt="Intel" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-mastercard.webp" alt="Mastercard" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-microsoft.webp" alt="Microsoft" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-kraft.webp" alt="Kraft" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-michelin.webp" alt="Michelin" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-paramount.webp" alt="Paramount+" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-chevron.webp" alt="Chevron" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-tiffany.webp" alt="Tiffany & Co." loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-churchdwight.webp" alt="Church & Dwight" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-verizon.webp" alt="Verizon" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-nissan.webp" alt="Nissan" loading="lazy" width="500" height="280"></div>
+        <div class="lg"><img src="/img/logo-basf.webp" alt="BASF" loading="lazy" width="500" height="280"></div>
+    </div>
+  </div>
+
+  <div class="band">
+    <img loading="lazy" decoding="async" src="/img/band-after.webp" srcset="/img/band-after@half.webp 800w, /img/band-after.webp 1600w" sizes="(max-width:900px) 100vw, 90vw" alt="A lounge at dusk, lamps lit, a wall of pinned paper, nobody in the room">
+    <div class="bscrim"></div>
+    <div class="binner">
+      <p class="bline r">You need to do these things whether you do them with us or not.</p>
+      <p class="bsub rs">Tell us what you are trying to accomplish this year, and we will work backwards from it.</p>
+    </div>
+  </div>
+
+
+  <div class="foot" id="contact" style="border-top:2px solid var(--n-700)">
+    <div class="mark"><img class="logo" src="/img/mark.png" alt=""><b>Brand Nexus AI</b><div class="bar2"></div><div class="qual">Enterprise AI strategy and transformation</div></div>
+    <div class="name">Tell us what you are trying to accomplish this year.</div>
+    <p class="small" style="margin-top:2px;color:#bab6b6;max-width:52ch">We will work backwards from it.</p>
+
+    <form class="form" id="cform" method="post" action="/api/contact" novalidate>
+      <div class="f"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="f"><label for="cf-co">Company</label><input id="cf-co" name="company" type="text" autocomplete="organization" required></div>
+      <div class="f"><label for="cf-em">Email</label><input id="cf-em" name="email" type="email" autocomplete="email" required></div>
+      <div class="f"><label for="cf-q">What are you trying to accomplish this year?</label><textarea id="cf-q" name="goal" rows="3"></textarea></div>
+      <div class="hp" aria-hidden="true"><label for="cf-hp">Leave this blank</label><input id="cf-hp" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="act">
+        <button class="btn" id="cbtn" type="submit" style="background:var(--violet);border-color:var(--violet)">Send</button>
+        <p class="cmsg" id="cmsg" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+
+    <p class="small" style="margin-top:18px;color:#bab6b6;max-width:52ch">Cross-industry AI transformation. We design the operating model and we build the systems. Speaking and advisory at <a href="https://pedrolaboy.com">pedrolaboy.com</a>.</p>
+  </div>
+</section>
+
+</main>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS='http://www.w3.org/2000/svg', FF='Archivo, system-ui, sans-serif';
+
+  /* ==========================================================
+     Scene primitives and the four scenes for section 03, carried
+     over from the pitch build (primitives.js and src/viz/*). The
+     dark-ground colour tokens are swapped for their light-ground
+     equivalents so the section stays on the page's ground.
+     ========================================================== */
+  var C={ink:'#201e1d',violet:'#5a3cff',violetLt:'#8f72ff',
+    green:'#0f8f7b',amber:'#c9791a',crimson:'#f0629b',
+    dot:'#9b9797',dim:'#d7d3d3',lab:'#605d5d',lab2:'#7d7979',rule:'#d7d3d3',
+    iDot:'#807b78',iDim:'#4d4846',iHi:'#c9c5c3'};
+  function add(p,t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e;}
+  function rng(sd){var x=sd>>>0;return function(){x=(x*1664525+1013904223)>>>0;return x/4294967296;};}
+  function jgrid(w,h,c,r,sd,j){var g=rng(sd),p=[],cw=w/c,ch=h/r,x,y;j=(j===undefined)?.46:j;
+    for(y=0;y<r;y++)for(x=0;x<c;x++)p.push({x:(x+.5+(g()-.5)*2*j)*cw,y:(y+.5+(g()-.5)*2*j)*ch,r:g()});return p;}
+  function txt(p,x,y,t,o){var e=add(p,'text',Object.assign({x:x,y:y,'font-family':FF},o||{}));e.textContent=t;return e;}
+  function atom(p,x,y,r,f){return add(p,'circle',{cx:x.toFixed(1),cy:y.toFixed(1),r:r||5.5,fill:f||C.dot,class:'d'});}
+  function person(p,x,y,r){return add(p,'circle',{cx:x.toFixed(1),cy:y.toFixed(1),r:r||10,fill:C.violet,class:'d'});}
+  function agent(p,x,y,sz,f){var h=sz||8;return add(p,'rect',{x:(x-h).toFixed(1),y:(y-h).toFixed(1),width:h*2,height:h*2,fill:f||C.dot,class:'d'});}
+  function keyShape(g,k,cx,cy,c){
+    if(k==='agent') add(g,'rect',{x:cx,y:cy-9,width:14,height:14,fill:c});
+    else if(k==='line') add(g,'line',{x1:cx,y1:cy-2,x2:cx+18,y2:cy-2,stroke:c,'stroke-width':3});
+    else add(g,'circle',{cx:cx+7,cy:cy-2,r:6,fill:c});}
+  function key(p,x,y,items){
+    var g=add(p,'g',{class:'d',opacity:0}),cx=x;
+    items.forEach(function(it){ keyShape(g,it.k||'dot',cx,y,it.c);
+      txt(g,cx+28,y+3,it.t,{fill:C.lab,'font-size':13,'font-weight':700,'letter-spacing':1.5});
+      cx += 30 + it.t.length*10.4 + 42; });
+    return g;}
+
+  var VIZ={};
+
+  /* islands of what you know, and the people who hold it */
+  function memField(sv){
+    var g=add(sv,'g',{}),islands=[[230,240],[665,225],[280,665],[675,660]];
+    var lg=add(g,'g',{}),dg=add(g,'g',{}),nodes=[],all=[];
+    islands.forEach(function(ct,ii){
+      var pts=jgrid(250,250,4,4,17+ii*7).map(function(p){return{x:p.x+ct[0]-125,y:p.y+ct[1]-125,r:p.r};});
+      var loc=[],anchor=pts[5];
+      pts.forEach(function(p,j){
+        var isP=(j===5);
+        var el=isP?person(dg,p.x,p.y,10):atom(dg,p.x,p.y,5.5);
+        var owned=isP||Math.hypot(p.x-anchor.x,p.y-anchor.y)<96;
+        var n={el:el,x:p.x,y:p.y,isP:isP,owner:owned?ii:-1,ls:[],island:ii};
+        loc.push(n);nodes.push(n);all.push(n);});
+      loc.forEach(function(a,ai){loc.forEach(function(b,bi){
+        if(bi<=ai||Math.hypot(a.x-b.x,a.y-b.y)>135) return;
+        var l=add(lg,'line',{x1:a.x.toFixed(1),y1:a.y.toFixed(1),x2:b.x.toFixed(1),y2:b.y.toFixed(1),
+          stroke:C.dot,'stroke-width':1.3,opacity:.36,class:'ln'});
+        a.ls.push(l);b.ls.push(l);});});});
+    var cross=add(g,'g',{}),xr=rng(5);
+    for(var i=0;i<34;i++){
+      var a=all[(xr()*all.length)|0],b=all[(xr()*all.length)|0];
+      if(!a||!b||a.island===b.island) continue;
+      add(cross,'line',{x1:a.x.toFixed(1),y1:a.y.toFixed(1),x2:b.x.toFixed(1),y2:b.y.toFixed(1),
+        stroke:C.green,'stroke-width':1.6,opacity:0,class:'ln'});}
+    return {nodes:nodes,cross:cross};
+  }
+  VIZ.inst=function(sv){
+    var sc=memField(sv);
+    var K=key(sv,20,920,[{k:'dot',c:C.green,t:'ONE GRAPH, ONE SOURCE'},{k:'dot',c:C.violet,t:'THREE PEOPLE, LEAVING'}]);
+    sv._apply=function(st){
+      sc.nodes.forEach(function(n){
+        var gone = st>=2 && n.isP && n.island<3;
+        n.el.setAttribute('opacity',gone?0:1);
+        n.el.setAttribute('transform',gone?'translate(0,-620)':'');
+        n.ls.forEach(function(l){ l.setAttribute('opacity',st>=1?.5:.36);
+          l.setAttribute('stroke',st>=1?C.green:C.dot); });});
+      [].forEach.call(sc.cross.childNodes,function(b,i){
+        b.setAttribute('opacity',st>=1?.5:0); b.style.transitionDelay=((i%18)*36)+'ms';});
+      K.setAttribute('opacity',st>=1?1:0);
+    };
+  };
+
+  /* one inference, then it multiplies */
+  VIZ.strat=function(sv){
+    var pts=jgrid(880,840,9,9,97).map(function(p){return{x:p.x+10,y:p.y+20};});
+    var g=add(sv,'g',{}),many=add(g,'g',{}),one=add(g,'g',{}),dg=add(g,'g',{});
+    pts.forEach(function(p){atom(dg,p.x,p.y,5.5);});
+    var A=pts[30],B=pts[14],Cc=pts[58];
+    var ring=add(one,'circle',{cx:A.x.toFixed(1),cy:A.y.toFixed(1),r:24,fill:'none',stroke:C.green,'stroke-width':2.5,opacity:0,class:'d'});
+    var l1=add(one,'line',{x1:A.x.toFixed(1),y1:A.y.toFixed(1),x2:B.x.toFixed(1),y2:B.y.toFixed(1),stroke:C.green,'stroke-width':3,opacity:0,class:'ln'});
+    var l2=add(one,'line',{x1:B.x.toFixed(1),y1:B.y.toFixed(1),x2:Cc.x.toFixed(1),y2:Cc.y.toFixed(1),stroke:C.green,'stroke-width':3,opacity:0,'stroke-dasharray':'7 6',class:'ln'});
+    var la=txt(one,A.x+28,A.y+5,'A RESULT',{fill:C.green,'font-size':13,'font-weight':800,'letter-spacing':1.6,opacity:0,class:'d'});
+    var lb=txt(one,Cc.x+20,Cc.y-16,'RUN IT HERE TOO',{fill:C.green,'font-size':13,'font-weight':800,'letter-spacing':1.6,opacity:0,class:'d'});
+    var rest=[],r=rng(9);
+    for(var i=0;i<72;i++){var a=(r()*pts.length)|0,b=(r()*pts.length)|0; if(a===b) continue;
+      rest.push(add(many,'line',{x1:pts[a].x.toFixed(1),y1:pts[a].y.toFixed(1),x2:pts[b].x.toFixed(1),y2:pts[b].y.toFixed(1),
+        stroke:C.green,'stroke-width':1.6,opacity:0,'stroke-dasharray':'7 6',class:'ln'}));}
+    var K=key(g,20,920,[{k:'dot',c:C.dot,t:'SOMETHING YOU KNOW'},{k:'line',c:C.green,t:'A LINK NOBODY DREW'}]);
+    sv._apply=function(st){
+      ring.setAttribute('opacity',st>=1?.9:0); la.setAttribute('opacity',st>=1?1:0);
+      l1.setAttribute('opacity',st>=1?.95:0);
+      l2.setAttribute('opacity',st>=2?.95:0); lb.setAttribute('opacity',st>=2?1:0);
+      rest.forEach(function(l,i){l.setAttribute('opacity',st>=2?.5:0); l.style.transitionDelay=(i*16)+'ms';});
+      K.setAttribute('opacity',st>=1?1:0);
+    };
+  };
+
+  /* department to work */
+  VIZ.work=function(sv){
+    var g=add(sv,'g',{}),org=add(g,'g',{class:'d',transform:'translate(0,110)'});
+    add(org,'rect',{x:420,y:120,width:160,height:60,fill:'none',stroke:C.ink,'stroke-width':2});
+    /* branches centred on the root at 500, leaves centred on their own parent */
+    [0,1,2].forEach(function(i){var x=420+(i-1)*260;
+      add(org,'rect',{x:x,y:340,width:160,height:60,fill:'none',stroke:C.ink,'stroke-width':2});
+      add(org,'line',{x1:500,y1:180,x2:x+80,y2:340,stroke:C.ink,'stroke-width':2});
+      [0,1,2].forEach(function(j){var cx=x+80+(j-1)*82;
+        add(org,'rect',{x:cx-36,y:560,width:72,height:40,fill:'none',stroke:C.lab2,'stroke-width':2});
+        add(org,'line',{x1:x+80,y1:400,x2:cx,y2:560,stroke:C.lab2,'stroke-width':2});});});
+    var bg=add(g,'g',{opacity:0,class:'d'});
+    var nm=['HUMAN LED','AGENT ASSISTED','AGENT LED','DELEGATED'],
+        sb=['JUDGMENT','DRAFTING','EXPERT VERIFIES','EXCEPTIONS ONLY'];
+    var bands=nm.map(function(n,i){var x=40+i*240,gg=add(bg,'g',{class:'d'});
+      add(gg,'rect',{x:x,y:250,width:220,height:400,fill:'none',stroke:C.ink,'stroke-width':2});
+      txt(gg,x+16,578,n,{fill:C.ink,'font-size':17,'font-weight':800,'letter-spacing':.6});
+      txt(gg,x+16,610,sb[i],{fill:C.lab,'font-size':13,'font-weight':600,'letter-spacing':1.6});
+      person(gg,x+32,310,10);
+      for(var k=1;k<=i;k++) agent(gg,x+32+k*34,310,8,C.dot);
+      return gg;});
+    var K=key(g,40,730,[{k:'dot',c:C.violet,t:'TEAM MEMBER'},{k:'agent',c:C.dot,t:'AN AGENT'}]);
+    sv._apply=function(st){
+      org.setAttribute('opacity',st>=1?0:1);
+      bg.setAttribute('opacity',st>=1?1:0);
+      bands.forEach(function(b,i){b.setAttribute('opacity',st>=2?1:(st>=1?.25:0)); b.style.transitionDelay=(i*90)+'ms';});
+      K.setAttribute('opacity',st>=2?1:0);
+    };
+  };
+
+  /* everything routes through an expert on its way out */
+  VIZ.harness=function(sv){
+    var g=add(sv,'g',{}),cx=500,cy=430,inn=[],ags=[];
+    for(var i=0;i<16;i++){
+      var a=(i/16)*Math.PI*2+Math.PI/16,R=330,ax=cx+R*Math.cos(a),ay=cy+R*Math.sin(a);
+      inn.push(add(g,'line',{x1:ax.toFixed(1),y1:ay.toFixed(1),x2:(cx+62*Math.cos(a)).toFixed(1),y2:(cy+62*Math.sin(a)).toFixed(1),
+        stroke:C.dot,'stroke-width':1.7,opacity:0,class:'ln'}));
+      var sq=agent(g,ax,ay,9,C.dot); sq.setAttribute('opacity',0); ags.push(sq);}
+    var expert=person(g,cx,cy,48); expert.setAttribute('opacity',0);
+    var elab=txt(g,cx-72,cy+96,'YOUR EXPERT',{fill:C.violet,'text-anchor':'end','font-size':14,'font-weight':800,'letter-spacing':2,opacity:0,class:'d'});
+    var exit=add(g,'g',{opacity:0,class:'d'});
+    add(exit,'line',{x1:cx,y1:cy+48,x2:cx,y2:880,stroke:C.violet,'stroke-width':5});
+    txt(exit,cx+16,870,'EVERYTHING THAT SHIPS',{fill:C.violet,'font-size':14,'font-weight':800,'letter-spacing':1.8});
+    var K=key(g,20,940,[{k:'dot',c:C.violet,t:'YOUR EXPERT'},{k:'agent',c:C.dot,t:'AN AGENT'}]);
+    sv._apply=function(st){
+      ags.forEach(function(a,i){a.setAttribute('opacity',st>=0?1:0); a.style.transitionDelay=(i*28)+'ms';});
+      inn.forEach(function(l,i){l.setAttribute('opacity',st>=1?.45:0); l.style.transitionDelay=(i*28)+'ms';});
+      expert.setAttribute('opacity',st>=1?1:0);
+      elab.setAttribute('opacity',st>=1?1:0);
+      exit.setAttribute('opacity',st>=2?1:0);
+      K.setAttribute('opacity',st>=1?1:0);
+    };
+  };
+
+  /* six problems, six purchases, one problem.
+     The pitch's hinge scene, re-laid on a 2 by 3 grid so it reads at the
+     scale a two-column frame gives it, and carrying the site's own six
+     problems rather than the pitch's category-specific ones. */
+  var BOX=[
+    {c:'#1cc0a4',p:['AN INTERMEDIARY','IN THE MIDDLE'],     f:'SALES · SERVICE · MARKETING',      t:['A LISTENING','PLATFORM']},
+    {c:'#8f72ff',p:['HOW YOU GET FOUND','AND EVALUATED'],   f:'SALES · MARKETING · TALENT',       t:['AN AI VISIBILITY','TOOL']},
+    {c:'#4fb3e8',p:['YOU PLAN AGAINST','A STALE PICTURE'],  f:'FINANCE · SALES · HR · MARKETING', t:['A PLANNING AND','BI TOOL']},
+    {c:'#c47ade',p:['REPEATABLE WORK,','STILL BY HAND'],    f:'FINANCE · SALES · HR · OPERATIONS',t:['AN AUTOMATION','PLATFORM']},
+    {c:'#f0a53a',p:['WHAT YOU KNOW','DOES NOT ACCUMULATE'], f:'EVERY FUNCTION',                   t:['A KNOWLEDGE','BASE']},
+    {c:'#f0629b',p:['NOBODY SEES WHAT','THE WORK COSTS'],   f:'FINANCE · OPERATIONS · PROCUREMENT',t:['A SPEND','ANALYTICS TOOL']}];
+  var BW=460, BH=290, BX=[20,520], BY=[30,350,670];
+  VIZ.hinge=function(sv){
+    var g=add(sv,'g',{});
+    BOX.forEach(function(b,i){ b.x=BX[i%2]; b.y=BY[(i/2)|0]; });
+    var boxes=BOX.map(function(b){ var gg=add(g,'g',{class:'d',opacity:0});
+      add(gg,'rect',{x:b.x,y:b.y,width:BW,height:BH,fill:'none',stroke:C.iDim,'stroke-width':2});
+      txt(gg,b.x+18,b.y+32,'PROBLEM',{fill:C.iDot,'font-size':13,'font-weight':700,'letter-spacing':2.2});
+      txt(gg,b.x+18,b.y+62,b.p[0],{fill:C.iHi,'font-size':20,'font-weight':800,'letter-spacing':.8});
+      txt(gg,b.x+18,b.y+88,b.p[1],{fill:C.iHi,'font-size':20,'font-weight':800,'letter-spacing':.8});
+      txt(gg,b.x+18,b.y+118,b.f,{fill:b.c,'font-size':13,'font-weight':700,'letter-spacing':1.3});
+      return gg;});
+    var tools=BOX.map(function(b){ var gg=add(g,'g',{class:'d',opacity:0});
+      add(gg,'rect',{x:b.x+18,y:b.y+136,width:BW-36,height:80,fill:b.c,'fill-opacity':.16,stroke:b.c,'stroke-width':2});
+      txt(gg,b.x+34,b.y+166,b.t[0],{fill:b.c,'font-size':20,'font-weight':800,'letter-spacing':1});
+      txt(gg,b.x+34,b.y+194,b.t[1],{fill:b.c,'font-size':20,'font-weight':800,'letter-spacing':1});
+      txt(gg,b.x+18,b.y+254,'+1 SYSTEM   +1 WORKFLOW   +1 FIXED COST',
+        {fill:C.iDot,'font-size':13.5,'font-weight':700,'letter-spacing':.9});
+      return gg;});
+    var gaps=add(g,'g',{opacity:0,class:'d'}),xs=add(g,'g',{opacity:0,class:'d'}),mids=[];
+    [[0,1],[2,3],[4,5]].forEach(function(pr){ var a=BOX[pr[0]],b=BOX[pr[1]],y=a.y+BH/2;
+      add(gaps,'line',{x1:a.x+BW,y1:y,x2:b.x,y2:y,stroke:C.iDim,'stroke-width':2,'stroke-dasharray':'6 9'});
+      mids.push([(a.x+BW+b.x)/2,y]);});
+    [[0,2],[1,3],[2,4],[3,5]].forEach(function(pr){ var a=BOX[pr[0]],b=BOX[pr[1]],x=a.x+BW/2;
+      add(gaps,'line',{x1:x,y1:a.y+BH,x2:x,y2:b.y,stroke:C.iDim,'stroke-width':2,'stroke-dasharray':'6 9'});
+      mids.push([x,(a.y+BH+b.y)/2]);});
+    mids.forEach(function(m){
+      add(xs,'line',{x1:m[0]-13,y1:m[1]-13,x2:m[0]+13,y2:m[1]+13,stroke:C.crimson,'stroke-width':3.4});
+      add(xs,'line',{x1:m[0]+13,y1:m[1]-13,x2:m[0]-13,y2:m[1]+13,stroke:C.crimson,'stroke-width':3.4});});
+    var tally=txt(g,20,992,'',{fill:C.crimson,'font-size':18,'font-weight':800,'letter-spacing':2});
+    var one=add(g,'g',{opacity:0,class:'d'});
+    add(one,'rect',{x:20,y:30,width:960,height:930,fill:C.ink});
+    add(one,'rect',{x:20,y:30,width:960,height:930,fill:'none',stroke:C.violetLt,'stroke-width':3});
+    txt(one,56,244,'ONE PROBLEM',{fill:C.violetLt,'font-size':16,'font-weight':700,'letter-spacing':3});
+    txt(one,56,366,'YOUR COMPANY IS NOT',{fill:C.iHi,'font-size':62,'font-weight':900,'letter-spacing':-2});
+    txt(one,56,440,'BUILT TO GET SMARTER',{fill:C.iHi,'font-size':62,'font-weight':900,'letter-spacing':-2});
+    var ans=add(g,'g',{opacity:0,class:'d'});
+    add(ans,'line',{x1:56,y1:548,x2:944,y2:548,stroke:C.violetLt,'stroke-width':2});
+    txt(ans,56,722,'AI NATIVE',{fill:C.violetLt,'font-size':132,'font-weight':900,'letter-spacing':-5});
+    txt(ans,56,794,'A MEANS.  ONE END:  VALUE THAT COMPOUNDS.',{fill:C.iHi,'font-size':19,'font-weight':800,'letter-spacing':2.4});
+    sv._apply=function(st){
+      boxes.forEach(function(m,i){ m.setAttribute('opacity', st<=2?1:.07);
+        m.style.transitionDelay=(st===0?i*70:0)+'ms';});
+      tools.forEach(function(m,i){ m.setAttribute('opacity', st>=1?(st<=2?1:.07):0);
+        m.style.transitionDelay=(st===1?i*80:0)+'ms';});
+      gaps.setAttribute('opacity',st===2?1:0);
+      xs.setAttribute('opacity',st===2?1:0);
+      tally.textContent = st===1 ? 'SIX SYSTEMS. SIX WORKFLOWS. SIX LINES OF FIXED COST.'
+                        : (st===2 ? 'AND NOTHING CROSSES BETWEEN THEM.' : '');
+      one.setAttribute('opacity',st>=3?1:0);
+      ans.setAttribute('opacity',st>=4?1:0);
+    };
+  };
+
+  /* twelve cycles. one company keeps what it learned, the other starts over. */
+  VIZ.compound=function(sv){
+    var g=add(sv,'g',{}), X0=120, X1=872, BASE=812, TOP=205, N=12, FLAT=662;
+    var MAG='#8f47b0';
+    function px(i){ return X0 + (X1-X0)*i/(N-1); }
+    var vals=[], i; for(i=0;i<N;i++) vals.push(Math.pow(1.212,i));
+    var vmax=vals[N-1];
+    function cy(i){ return FLAT - (vals[i]-1)/(vmax-1)*(FLAT-TOP); }
+
+    /* frame */
+    add(g,'line',{x1:X0,y1:BASE,x2:X1,y2:BASE,stroke:C.rule,'stroke-width':2});
+    add(g,'line',{x1:X0,y1:TOP-46,x2:X0,y2:BASE,stroke:C.rule,'stroke-width':2});
+    txt(g,X0,BASE+36,'CYCLE 1',{fill:C.lab2,'font-size':13,'font-weight':700,'letter-spacing':1.6});
+    txt(g,X1,BASE+36,'CYCLE 12',{fill:C.lab2,'font-size':13,'font-weight':700,'letter-spacing':1.6,'text-anchor':'end'});
+    txt(g,X0+8,TOP-62,'VALUE OUT',{fill:C.lab2,'font-size':13,'font-weight':700,'letter-spacing':1.6});
+    var ticks=add(g,'g',{class:'d',opacity:0});
+    for(i=0;i<N;i++) add(ticks,'line',{x1:px(i),y1:BASE,x2:px(i),y2:BASE-11,stroke:C.dot,'stroke-width':2});
+
+    /* the gap between them */
+    var pts=[]; for(i=0;i<N;i++) pts.push(px(i).toFixed(1)+' '+cy(i).toFixed(1));
+    var gap=add(g,'path',{d:'M '+px(0)+' '+FLAT+' L '+pts.join(' L ')+' L '+px(N-1)+' '+FLAT+' Z',
+      fill:MAG,'fill-opacity':0,class:'d'});
+
+    /* the company that starts over every time */
+    var flatPts=[]; for(i=0;i<N;i++) flatPts.push(px(i).toFixed(1)+' '+FLAT);
+    add(g,'polyline',{points:flatPts.join(' '),fill:'none',stroke:C.dot,'stroke-width':3});
+    var fd=add(g,'g',{});
+    for(i=0;i<N;i++) atom(fd,px(i),FLAT,6,C.dot);
+    var flab=txt(g,X1+6,FLAT+5,'',{fill:C.lab,'font-size':13,'font-weight':800,'letter-spacing':1.5,opacity:0,class:'d'});
+    flab.textContent='WITHOUT MEMORY';
+    flab.setAttribute('text-anchor','end'); flab.setAttribute('x',X1-8); flab.setAttribute('y',FLAT+30);
+
+    /* the company that keeps it */
+    var curve=add(g,'polyline',{points:pts.join(' '),fill:'none',stroke:MAG,'stroke-width':3.5,
+      opacity:0,class:'ln'});
+    var cd=[]; for(i=0;i<N;i++){ var d=atom(g,px(i),cy(i),6.5,MAG); d.setAttribute('opacity',0); cd.push(d); }
+    var clab=txt(g,X1-14,cy(N-1)-30,'WITH MEMORY',{fill:MAG,'font-size':13,'font-weight':800,
+      'letter-spacing':1.5,'text-anchor':'end',opacity:0,class:'d'});
+
+    /* month six */
+    var six=add(g,'g',{opacity:0,class:'d'});
+    add(six,'line',{x1:px(5),y1:cy(5),x2:px(5),y2:FLAT,stroke:MAG,'stroke-width':2,'stroke-dasharray':'6 7'});
+    txt(six,px(5)+12,(cy(5)+FLAT)/2,'MONTH SIX',{fill:MAG,'font-size':12.5,'font-weight':800,'letter-spacing':1.5});
+
+    /* the measure at twelve */
+    var meas=add(g,'g',{opacity:0,class:'d'});
+    var MX=px(N-1)+56;
+    add(meas,'line',{x1:MX,y1:cy(N-1),x2:MX,y2:FLAT,stroke:C.ink,'stroke-width':2});
+    add(meas,'line',{x1:MX-11,y1:cy(N-1),x2:MX+11,y2:cy(N-1),stroke:C.ink,'stroke-width':2});
+    add(meas,'line',{x1:MX-11,y1:FLAT,x2:MX+11,y2:FLAT,stroke:C.ink,'stroke-width':2});
+    txt(meas,MX,cy(N-1)-26,'THE GAP',{fill:C.ink,'font-size':14,'font-weight':800,
+      'letter-spacing':1.8,'text-anchor':'middle'});
+
+    sv._apply=function(st){
+      ticks.setAttribute('opacity',1);
+      flab.setAttribute('opacity',st>=1?1:0);
+      curve.setAttribute('opacity',st>=1?1:0);
+      cd.forEach(function(d,j){ d.setAttribute('opacity',st>=1?1:0); d.style.transitionDelay=(j*46)+'ms'; });
+      clab.setAttribute('opacity',st>=1?1:0);
+      gap.setAttribute('fill-opacity',st>=2?.16:0);
+      six.setAttribute('opacity',st>=2?1:0);
+      meas.setAttribute('opacity',st>=3?1:0);
+    };
+  };
+
+  /* build every scene, then drive them from scroll position */
+  var scenes=[].slice.call(document.querySelectorAll('.stage')).map(function(st){
+    var sv=st.querySelector('svg[data-viz]'), f=sv && VIZ[sv.dataset.viz];
+    if(f) f(sv);
+    return {el:st, svg:sv, beats:[].slice.call(st.querySelectorAll('[data-at]')),
+            n:(sv && +sv.dataset.steps) || 1, last:-99};
+  });
+  function driveScenes(vh, wide){
+    scenes.forEach(function(sc){
+      var step;
+      if(!wide){ step = sc.n - 1; }
+      else {
+        var r = sc.el.getBoundingClientRect();
+        var pc = Math.max(0, Math.min(1, -r.top / Math.max(1, sc.el.offsetHeight - vh)));
+        step = Math.min(sc.n - 1, Math.floor(pc * sc.n));
+      }
+      if(step === sc.last) return;
+      sc.last = step;
+      sc.beats.forEach(function(b){
+        var at = +b.dataset.at;
+        b.classList.toggle('on', step >= at);
+        b.classList.toggle('gone', step > at);
+      });
+      if(sc.svg && sc.svg._apply) sc.svg._apply(step);
+    });
+  }
+
+  /* ==========================================================
+     Rail, segmented progress bar and the ring scrub, all driven
+     from one throttled scroll listener.
+     ========================================================== */
+  var secs  = [].slice.call(document.querySelectorAll('main section'));
+  var links = [].slice.call(document.querySelectorAll('#rail a'));
+  var ind   = document.getElementById('railind');
+  var prog  = document.getElementById('prog');
+  var small = window.matchMedia('(max-width: 900px)');
+  var topbar = document.getElementById('topbar');
+  function headH(){ var h = document.querySelector('.shead'); return h ? h.offsetHeight : 60; }
+  var hues  = ['var(--h00)','var(--h01)','var(--h02)','var(--h03)','var(--h04)','var(--h05)','var(--h06)'];
+
+  var segs = secs.map(function(){
+    var d=document.createElement('div'); d.className='seg'; d.innerHTML='<i></i>';
+    prog.appendChild(d); return d.firstChild;
+  });
+
+  var ticking=false, active=-1;
+  function update(){
+    ticking=false;
+    /* read first, write second, so nothing thrashes layout mid frame */
+    var st = window.scrollY || document.documentElement.scrollTop;
+    var vh = window.innerHeight;
+    /* the rail used to switch at 40% of the viewport while the sticky section
+       header switched at 0, so on the long sections the two disagreed for
+       thousands of pixels. Both now test the same line. */
+    var line = vh * 0.35, idx = 0, i, fills = [], rects = [];
+    for (i=0;i<secs.length;i++){
+      var r = secs[i].getBoundingClientRect();
+      rects.push(r);
+      if (r.top <= line) idx = i;
+      fills.push(-r.top / Math.max(1, secs[i].offsetHeight));
+    }
+    /* the stage sits inside a positioned section, so offsetTop is local.
+       the rect gives its true distance from the viewport top. */
+    /* only the section currently owning the rail keeps its header pinned, so
+       two headers can never stack at the top of the page */
+    for (i=0;i<secs.length;i++){
+      var h = secs[i].querySelector('.shead');
+      if (h) h.style.zIndex = (i === idx) ? 20 : 5;
+    }
+
+    for (i=0;i<segs.length;i++)
+      segs[i].style.width = (Math.max(0,Math.min(1,fills[i]))*100).toFixed(1) + '%';
+    driveScenes(vh, !small.matches);
+
+    if (idx !== active){
+      active = idx;
+      links.forEach(function(a,j){ a.classList.toggle('on', j===idx); });
+      ind.style.transform = 'translateY(' + (idx*60) + 'px)';
+      ind.style.background = hues[idx];
+      segs.forEach(function(el){ el.style.background = hues[idx]; });
+    }
+    if (topbar) topbar.classList.toggle('show', st > vh * 0.62);
+  }
+  function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  function resolve(){ scenes.forEach(function(sc){ sc.last = -99; }); }
+  if (small.addEventListener) small.addEventListener('change', function(){ resolve(); onScroll(); });
+  resolve();
+  update();
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.r,.rs,.gx').forEach(function(el){ io.observe(el); });
+})();
+
+(function(){
+  var f=document.getElementById('cform'); if(!f) return;
+  var btn=document.getElementById('cbtn'), msg=document.getElementById('cmsg');
+  function say(t,cls){ msg.textContent=t; msg.className='cmsg'+(cls?' '+cls:''); }
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var d={}; new FormData(f).forEach(function(v,k){ d[k]=String(v).trim(); });
+    if(!d.name || !d.company || !d.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){
+      say('Name, company and a valid email, please.','bad'); return;
+    }
+    btn.disabled=true; say('Sending.');
+    fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+      .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+      .then(function(r){
+        if(r.ok){ f.classList.add('sent'); say('Thank you. We will come back to you.','ok'); }
+        else { btn.disabled=false; say((r.j && r.j.error) || 'That did not send. Please try again.','bad'); }
+      })
+      .catch(function(){ btn.disabled=false; say('That did not send. Please try again.','bad'); });
+  });
+})();
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

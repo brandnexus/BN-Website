@@ -1,0 +1,7 @@
+{
+  "name": "brandnexus-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "brandnexus.com, static page with one serverless contact handler",
+  "engines": { "node": "22.x" }
+}
