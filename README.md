@@ -81,3 +81,5 @@ Every photograph below the fold is lazy loaded. The hero and the six band
 photographs each ship a half-resolution variant that phones pick up via
 `srcset`. `/img` is cached immutably for a year, so a repeat visit downloads
 only the HTML.
+
+
