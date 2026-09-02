@@ -135,6 +135,7 @@ a:focus-visible,summary:focus-visible{outline:2px solid var(--violet);outline-of
 .form input:focus,.form textarea:focus{outline:none}
 .form .f:focus-within{background:#2a2827}
 .form textarea{min-height:84px}
+.form .ts{background:var(--ink);padding:14px 18px;min-height:70px}
 .form .act{background:var(--ink);padding:16px 18px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .cmsg{margin:0;font-size:14px;color:var(--n-400);max-width:34ch}
@@ -972,6 +973,7 @@ figcaption{font-size:11px;line-height:1.45;color:var(--n-700);padding-top:10px;b
       <div class="f"><label for="cf-em">Email</label><input id="cf-em" name="email" type="email" autocomplete="email" required></div>
       <div class="f"><label for="cf-q">What are you trying to accomplish this year?</label><textarea id="cf-q" name="goal" rows="3"></textarea></div>
       <div class="hp" aria-hidden="true"><label for="cf-hp">Leave this blank</label><input id="cf-hp" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="ts"><div class="cf-turnstile" data-sitekey="0x4AAAAAAEkY2tqkmHkTm2x_" data-theme="dark" data-size="flexible"></div></div>
       <div class="act">
         <button class="btn" id="cbtn" type="submit" style="background:var(--violet);border-color:var(--violet)">Send</button>
         <p class="cmsg" id="cmsg" role="status" aria-live="polite"></p>
@@ -984,6 +986,7 @@ figcaption{font-size:11px;line-height:1.45;color:var(--n-700);padding-top:10px;b
 
 </main>
 
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 (function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1371,20 +1374,39 @@ figcaption{font-size:11px;line-height:1.45;color:var(--n-700);padding-top:10px;b
   var f=document.getElementById('cform'); if(!f) return;
   var btn=document.getElementById('cbtn'), msg=document.getElementById('cmsg');
   function say(t,cls){ msg.textContent=t; msg.className='cmsg'+(cls?' '+cls:''); }
+  // when the page finished loading. a bot that posts the instant the page
+  // exists cannot plausibly have typed four fields, so the handler treats a
+  // sub-three-second submission as automated.
+  var loadedAt = Date.now();
   f.addEventListener('submit', function(e){
     e.preventDefault();
     var d={}; new FormData(f).forEach(function(v,k){ d[k]=String(v).trim(); });
     if(!d.name || !d.company || !d.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){
       say('Name, company and a valid email, please.','bad'); return;
     }
+    // Turnstile injects its token as a hidden field inside the form, so the
+    // FormData sweep above has already picked it up under this name.
+    if(!d['cf-turnstile-response']){
+      say('Just a moment while the human check finishes, then try again.','bad'); return;
+    }
+    d.elapsed = Date.now() - loadedAt;
     btn.disabled=true; say('Sending.');
     fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
       .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
       .then(function(r){
         if(r.ok){ f.classList.add('sent'); say('Thank you. We will come back to you.','ok'); }
-        else { btn.disabled=false; say((r.j && r.j.error) || 'That did not send. Please try again.','bad'); }
+        else {
+          btn.disabled=false;
+          say((r.j && r.j.error) || 'That did not send. Please try again.','bad');
+          // a Turnstile token is single use. without this reset the second
+          // attempt always fails, whatever the first failure actually was.
+          if(window.turnstile) try{ window.turnstile.reset(); }catch(_){}
+        }
       })
-      .catch(function(){ btn.disabled=false; say('That did not send. Please try again.','bad'); });
+      .catch(function(){
+        btn.disabled=false; say('That did not send. Please try again.','bad');
+        if(window.turnstile) try{ window.turnstile.reset(); }catch(_){}
+      });
   });
 })();
 </script>
