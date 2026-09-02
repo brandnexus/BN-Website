@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Brand Nexus AI · Enterprise AI Strategy and Transformation</title>
+<title>Brand Nexus AI · Enterprise AI Transformation</title>
 <meta name="description" content="Brand Nexus AI helps enterprises become AI native. We design the operating model and build the systems, so knowledge compounds instead of leaving. 25 years in AI, 40 Fortune 500 engagements, 100+ enterprises upskilled.">
 <link rel="icon" href="/img/mark.png">
-<meta property="og:title" content="Brand Nexus AI · Enterprise AI Strategy and Transformation">
+<meta property="og:title" content="Brand Nexus AI · Enterprise AI Transformation">
 <meta property="og:description" content="We design the AI native operating model and build the systems. The advantage that replaces scale, brand and distribution is being assembled right now.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://brandnexus.com/">
@@ -15,7 +15,7 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://brandnexus.com/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Brand Nexus AI","url":"https://brandnexus.com/","logo":"https://brandnexus.com/img/mark.png","description":"Enterprise AI strategy and transformation. We design the AI native operating model and build the systems.","founder":{"@type":"Person","name":"Pedro Laboy"},"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"contact@brandnexus.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Brand Nexus AI","url":"https://brandnexus.com/","logo":"https://brandnexus.com/img/mark.png","description":"Enterprise AI transformation. We design the AI native operating model and build the systems.","founder":{"@type":"Person","name":"Pedro Laboy"},"contactPoint":{"@type":"ContactPoint","contactType":"sales","email":"contact@brandnexus.com"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
@@ -207,7 +207,10 @@ section:first-of-type{border-top:0}
 .shead .desc{font-size:13px;color:var(--n-600)}
 
 /* ---------- hero ---------- */
-#hero{position:relative;min-height:clamp(540px,74svh,880px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+/* the hero content is a fixed ~522px tall, so every pixel of height above
+   that lands as dead space over the logo. sized to sit just above the
+   content rather than to fill the viewport. */
+#hero{position:relative;min-height:clamp(560px,62svh,700px);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
 #hero .shot{position:absolute;inset:0;z-index:0}
 #hero .shot img{width:100%;height:100%;object-fit:cover;object-position:center 42%;animation:drift 2.4s var(--ease) both}
 #hero .scrim{position:absolute;inset:0;z-index:1;
@@ -486,7 +489,7 @@ figcaption{font-size:11px;line-height:1.45;color:var(--n-700);padding-top:10px;b
 <div id="prog" aria-hidden="true"></div>
 
 <div id="topbar">
-  <div class="mark"><img class="logo" src="/img/mark.png" alt=""><b>Brand Nexus AI</b><div class="bar2"></div><div class="qual">Enterprise AI strategy and transformation</div></div>
+  <div class="mark"><img class="logo" src="/img/mark.png" alt=""><b>Brand Nexus AI</b><div class="bar2"></div><div class="qual">Enterprise AI transformation</div></div>
   <a class="btn" href="#contact">Contact us</a>
 </div>
 
@@ -512,7 +515,7 @@ figcaption{font-size:11px;line-height:1.45;color:var(--n-700);padding-top:10px;b
     <div class="shot"><img fetchpriority="high" src="/img/hero.webp" srcset="/img/hero@half.webp 800w, /img/hero.webp 1600w" sizes="(max-width:900px) 100vw, 90vw" alt="A working session at a wall of paper in an open office"></div>
     <div class="scrim"></div>
     <div class="inner">
-      <header class="mark r"><img class="logo" src="/img/mark.png" alt=""><b>Brand Nexus AI</b><div class="bar2"></div><div class="qual">Enterprise AI strategy and transformation</div></header>
+      <header class="mark r"><img class="logo" src="/img/mark.png" alt=""><b>Brand Nexus AI</b><div class="bar2"></div><div class="qual">Enterprise AI transformation</div></header>
       <h1 class="h1 wipe">Whatever makes you hard to beat took decades to build. It is being rebuilt in months.</h1>
       <p class="lede r" style="margin-top:clamp(20px,2.4vw,34px);max-width:62ch">Scale, brand, distribution, the relationships that took a generation to build. Every one of them is getting cheaper to copy each quarter. What replaces them is an operating model with AI underneath it, and it is being assembled right now inside somebody's company. Probably not yours yet.</p>
     </div>
@@ -963,7 +966,7 @@ figcaption{font-size:11px;line-height:1.45;color:var(--n-700);padding-top:10px;b
 
 
   <div class="foot" id="contact" style="border-top:2px solid var(--n-700)">
-    <div class="mark"><img class="logo" src="/img/mark.png" alt=""><b>Brand Nexus AI</b><div class="bar2"></div><div class="qual">Enterprise AI strategy and transformation</div></div>
+    <div class="mark"><img class="logo" src="/img/mark.png" alt=""><b>Brand Nexus AI</b><div class="bar2"></div><div class="qual">Enterprise AI transformation</div></div>
     <div class="name">Tell us what you are trying to accomplish this year.</div>
     <p class="small" style="margin-top:2px;color:#bab6b6;max-width:52ch">We will work backwards from it.</p>
 
