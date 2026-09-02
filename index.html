@@ -234,10 +234,21 @@ section:first-of-type{border-top:0}
 @keyframes drift{from{transform:scale(1.12)}to{transform:scale(1)}}
 
 /* ---------- cell grids ---------- */
-.cells{display:grid;background:var(--ink);gap:2px;border:2px solid var(--ink)}
-.cells.c4{grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))}
-.cells.c3{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr))}
-.cell{background:var(--ground);padding:clamp(18px,2vw,26px)}
+/* the ink rules used to come from the container showing through the gaps,
+   so a row that did not fill (four items in three columns) left a dark
+   void. the rules now live on the cells, so empty track space is never
+   painted at any viewport width. */
+.cells{display:grid;gap:2px;padding:2px}
+/* explicit column counts, not auto-fit. auto-fit picks a track count from
+   the available width with no knowledge of how many items there are, so
+   four items regularly landed in three or five columns. these divide. */
+.cells.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cells.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cells.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:900px){.cells.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cells.c3{grid-template-columns:1fr}}
+@media (max-width:560px){.cells.c4,.cells.c2{grid-template-columns:1fr}}
+.cell{background:var(--ground);padding:clamp(18px,2vw,26px);box-shadow:0 0 0 2px var(--ink)}
 .ink .cell{background:var(--ink)}
 .cell .fig{font-size:clamp(48px,5.4vw,86px);font-weight:900;letter-spacing:-.04em;line-height:.9;color:var(--violet);font-variant-numeric:tabular-nums}
 /* unit glyphs set small against the numeral, from the pitch build (.num i) */
@@ -246,17 +257,17 @@ section:first-of-type{border-top:0}
 .cell .micro{margin-top:10px}
 
 /* content cards */
-.cards{display:grid;gap:2px;background:var(--ink);border:2px solid var(--ink);
+.cards{display:grid;gap:2px;padding:2px;
   grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
-.card{background:var(--ground);padding:clamp(18px,2vw,26px);display:flex;flex-direction:column;gap:10px}
+.card{background:var(--ground);padding:clamp(18px,2vw,26px);display:flex;flex-direction:column;gap:10px;box-shadow:0 0 0 2px var(--ink)}
 .card .hb{height:6px;width:100%}
 .card h4{margin:0;font-size:clamp(17px,1.5vw,21px);font-weight:800;letter-spacing:-.018em;line-height:1.15}
 .card p{font-size:clamp(13.5px,1vw,15px);color:var(--n-700);margin:0}
 /* which functions the problem bites in */
 .card .fnl{margin-top:auto;padding-top:14px;border-top:2px solid var(--n-200);color:var(--hue,var(--violet));
   font-size:10.5px;letter-spacing:.11em;font-weight:700}
-.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media (max-width:760px){.cards.two{grid-template-columns:1fr}}
+.cards.two,.cards.quad{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.cards.two,.cards.quad{grid-template-columns:1fr}}
 .cards.two .card{--hue:var(--h01)}
 
 /* callout */
@@ -602,7 +613,7 @@ figcaption{font-size:11px;line-height:1.45;color:var(--n-700);padding-top:10px;b
 
     <div style="margin-top:clamp(44px,6vw,88px)">
       <h3 class="h3 r">What you know is in four states, and none of them is useful.</h3>
-      <div class="cards r" style="margin-top:24px">
+      <div class="cards quad r" style="margin-top:24px">
         <div class="card"><div class="hb" style="background:var(--h03)"></div><h4>Fragmented</h4><p>What one team learns never reaches the next. The islands do not touch.</p></div>
         <div class="card"><div class="hb" style="background:var(--h03)"></div><h4>Dated</h4><p>Half of it describes a customer who has moved on, and nothing tells you which half.</p></div>
         <div class="card"><div class="hb" style="background:var(--h03)"></div><h4>Inaccessible</h4><p>Locked in a system nobody queries, or in a head that is in a meeting.</p></div>
@@ -828,7 +839,7 @@ figcaption{font-size:11px;line-height:1.45;color:var(--n-700);padding-top:10px;b
           <div><div class="kicker">Challenge</div><p>Half the prescriptions written for one drug were never filled. Patients got confused partway through the process and stopped, and nobody knew which patients until it had already happened.</p></div>
           <div><div class="kicker">Solution</div><p>We built the ability to spot at-risk patients before they dropped out, with guidance where guidance was enough and a referral to a nurse practitioner where it was not.</p></div>
         </div>
-        <div class="cells c3 figs"><div class="cell"><div class="fig">$174M</div><div class="micro">Incremental revenue, six months</div></div><div class="cell"><div class="fig">+22<i>%</i></div><div class="micro">Patient satisfaction</div></div></div>
+        <div class="cells c2 figs"><div class="cell"><div class="fig">$174M</div><div class="micro">Incremental revenue, six months</div></div><div class="cell"><div class="fig">+22<i>%</i></div><div class="micro">Patient satisfaction</div></div></div>
         <p class="close">The agent did not replace the nurse. It found the patients the nurse never knew were in trouble.</p>
       </div>
     </details>
